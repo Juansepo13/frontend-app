@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { TuitService } from './tuit.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -8,6 +9,7 @@ import { TuitService } from './tuit.service';
 })
 export class AppComponent {
   title = 'frontend-app';
+  http = (HttpClient)
 
   constructor(private tuitService: TuitService) {} // Inyecta el servicio en el constructor
 
@@ -18,4 +20,3 @@ export class AppComponent {
     });
   }
 }
-

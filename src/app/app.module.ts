@@ -5,11 +5,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms'; // Asegúrate de importar FormsModule aquí
 
 import { AppComponent } from './app.component';
-import { TuitCrudComponent } from './tuit-crud/tuit-crud.component';
-import { RegistroComponent } from './registro/registro.component';
 
 @NgModule({
-  declarations: [AppComponent, TuitCrudComponent, RegistroComponent],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
