@@ -3,10 +3,14 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms'; // Asegúrate de importar FormsModule aquí
+import { PrimeNGConfig } from 'primeng/api'; // Importa PrimeNGConfig
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { TableModule } from 'primeng/table';
+import { ToastModule } from 'primeng/toast';
+import { DropdownModule } from 'primeng/dropdown';
 
 
 @NgModule({
@@ -17,10 +21,12 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     HttpClientModule,
     FormsModule,
     BrowserAnimationsModule,
-    NgbModule, // Asegúrate de que FormsModule esté importado aquí
-    
+    NgbModule,
+    TableModule,
+    ToastModule,
+    DropdownModule
   ],
-  providers: [],
+  providers: [PrimeNGConfig], // Agrega PrimeNGConfig como proveedor
   bootstrap: [AppComponent],
 })
 export class AppModule {}
