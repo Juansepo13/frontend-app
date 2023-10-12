@@ -29,4 +29,17 @@ export class AppComponent implements OnInit {
   }
 
   // Resto de tu código
+  onRowEditInit(user: any) {
+    // Implementa la lógica para iniciar la edición del usuario
+  }
+  
+  onRowEditSave(user: any) {
+    // Implementa la lógica para guardar los cambios después de editar
+  }
+  
+  onRowEditCancel(user: any, ri: number) {
+    // Implementa la lógica para cancelar la edición
+  }
+  
+
 }
