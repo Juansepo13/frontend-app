@@ -9,7 +9,7 @@ import { TuitService } from './tuit.service';
 export class AppComponent {
   title = 'frontend-app';
   users: any[] = []; // Inicializa la propiedad 'users' como un arreglo vacío
-
+  
   constructor(private tuitService: TuitService) {} // Inyecta el servicio en el constructor
 
   ngOnInit(): void {
@@ -23,7 +23,6 @@ export class AppComponent {
   }
   
   
-
   // Define los métodos para editar filas.
   onRowEditInit(user: any) {
     // Lógica para iniciar la edición de una fila.

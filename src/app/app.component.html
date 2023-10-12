@@ -1,28 +1,28 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Mi Página HTML</title>
+    <title>Usuarios</title>
 </head>
 <body>
     <header>
-        <h1>Encabezado</h1>
+        <h1>Usuarios</h1>
     </header>
     <section>
         <div id="encabezado-section">
-            <h2>Encabezado de la Sección</h2>
+            <h2>Lista de Usuarios</h2>
         </div>
         
         <!-- Asegúrate de que users esté definido y tenga datos -->
         <div *ngIf="users && users.length > 0">
-            <p-table [value]="users" dataKey="id" editMode="row" [tableStyle]="{'min-width': '50rem'}">
+            <p-table [value]="users" dataKey="id" editMode="row" [tableStyle]="{}">
             <!-- Encabezados de la tabla -->
             <ng-template pTemplate="header">
                 <tr>
-                <th style="width:20%">ID</th>
-                <th style="width:20%">Name</th>
-                <th style="width:20%">Email</th>
-                <th style="width:20%">Username</th>
-                <th style="width:20%">Actions</th>
+                <th style="width:10%">ID</th>
+                <th style="width:10%">Name</th>
+                <th style="width:10%">Email</th>
+                <th style="width:10%">Username</th>
+                <th style="width:500px">Mensajes</th>
                 </tr>
             </ng-template>
         
