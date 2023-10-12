@@ -6,6 +6,8 @@ import { FormsModule } from '@angular/forms'; // Asegúrate de importar FormsMod
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 
 @NgModule({
   declarations: [AppComponent],
@@ -14,7 +16,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    BrowserAnimationsModule, // Asegúrate de que FormsModule esté importado aquí
+    BrowserAnimationsModule,
+    NgbModule, // Asegúrate de que FormsModule esté importado aquí
+    
   ],
   providers: [],
   bootstrap: [AppComponent],
