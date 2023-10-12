@@ -15,12 +15,13 @@ export class AppComponent {
   ngOnInit(): void {
     console.log('Antes de llamar al servicio');
     this.tuitService.getTuits().subscribe((data) => {
-      // Procesa la respuesta para extraer los datos de usuario
-      this.users = data.map((item) => item.user);
+      // Procesa la respuesta para extraer los datos de usuario y el mensaje del tuit
+      this.users = data.map((item) => ({ ...item.user, message: item.message }));
       console.log('Datos del servicio:', data); // Agrega un log para verificar los datos.
     });
     console.log('Después de llamar al servicio');
   }
+  
   
 
   // Define los métodos para editar filas.
