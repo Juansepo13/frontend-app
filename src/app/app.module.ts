@@ -18,6 +18,9 @@ import { UserDetailsComponent } from './user-details/user-details.component';
 import { UserEditComponent } from './user-edit/user-edit.component';
 import { UserDeleteComponent } from './user-delete/user-delete.component';
 import { UserCreateComponent } from './user-create/user-create.component';
+import { MatIconModule } from '@angular/material/icon';
+import { ButtonModule } from 'primeng/button';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 
 @NgModule({
@@ -40,6 +43,9 @@ import { UserCreateComponent } from './user-create/user-create.component';
     ToastModule,
     DropdownModule,
     RouterModule,
+    MatIconModule,
+    ButtonModule,
+    MatSidenavModule,
   ],
   providers: [PrimeNGConfig, UserService], // Agrega UserService y TuitService como proveedores
   bootstrap: [AppComponent],

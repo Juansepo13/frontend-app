@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router'; // Importa Router
 import { UserService } from '../user.service';
 
 @Component({
@@ -8,22 +8,27 @@ import { UserService } from '../user.service';
   styleUrls: ['./user-edit.component.scss']
 })
 export class UserEditComponent implements OnInit {
-  user: any; // Aquí almacenaremos los detalles del usuario
+  user: any; 
   updatedMessage: string = '';
+  userData: any = {};
 
-  constructor(private route: ActivatedRoute, private userService: UserService) {}
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router, // Importa Router
+    private userService: UserService
+  ) {}
 
   ngOnInit() {
     this.route.params.subscribe((params) => {
       const userId = params['id'];
-      this.loadUserDetails(userId); // Llama a la función para cargar los detalles del usuario al iniciar el componente
+      this.loadUserDetails(userId);
     });
   }
 
   loadUserDetails(userId: number) {
     this.userService.getUserById(userId).subscribe(
       (data) => {
-        this.user = data;
+        this.user = data; // Asigna los detalles del usuario a la variable 'user'
       },
       (error) => {
         console.error('Error al cargar los detalles del usuario:', error);

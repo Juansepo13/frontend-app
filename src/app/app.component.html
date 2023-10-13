@@ -1,78 +1,29 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Usuarios</title>
-</head>
-<body>
-    <header>
-        <h1>Usuarios</h1>
-    </header>
-    <section>
-        <div id="encabezado-section">
-            <h2>Lista de Usuarios</h2>
-        </div>
-    
-        <!-- Botón para crear un nuevo usuario -->
-        <div>
-            <a [routerLink]="'/users/create'">Crear Usuario</a>
-        </div>
-        
-        <!-- Asegúrate de que users esté definido y tenga datos -->
-        <div *ngIf="users && users.length > 0">
-            <p-table [value]="users" dataKey="id" editMode="row" [tableStyle]="{}">
-            <!-- Encabezados de la tabla -->
-            <ng-template pTemplate="header">
-                <tr>
-                <th style="width:10%">ID</th>
-                <th style="width:10%">Name</th>
-                <th style="width:10%">Email</th>
-                <th style="width:10%">Username</th>
-                <th style="width:500px">Mensajes</th>
-                </tr>
-            </ng-template>
-    
-            <!-- Cuerpo de la tabla -->
-            <ng-template pTemplate="body" let-user let-editing="editing" let-ri="rowIndex">
-                <tr [pEditableRow]="user">
-                    <td>{{ user.id }}</td>
-                    <td>{{ user.name }}</td>
-                    <td>{{ user.email }}</td>
-                    <td>{{ user.username }}</td>
-                    <td>{{ user.message }}</td> <!-- Agregar esta columna para mostrar el mensaje del tuit -->
-                    <td>
-                        <!-- Botones de edición y acciones -->
-                        <div class="flex align-items-center justify-content-center gap-2">
-                            <!-- Ver usuario (directo al enlace) -->
-                            <a *ngIf="!editing" [routerLink]="'/user/' + user.id" class="p-button-rounded p-button-text">
-                              <i class="pi pi-search"></i> <!-- Icono de lupa para "Ver" -->
-                            </a>
-                          
-                            <!-- Editar usuario (iniciar edición) -->
-                            <button *ngIf="!editing" pButton pRipple type="button" pInitEditableRow (click)="onRowEditInit(user)" class="p-button-rounded p-button-text">
-                              <i class="pi pi-pencil"></i> <!-- Icono de lápiz para "Editar" -->
-                            </button>
-                          
-                            <!-- Eliminar usuario (directo al enlace) -->
-                            <a *ngIf="!editing" [routerLink]="'/user/delete/' + user.id" class="p-button-rounded p-button-text">
-                              <i class="pi pi-trash"></i> <!-- Icono de basura para "Eliminar" -->
-                            </a>
-                          
-                            <!-- Guardar cambios -->
-                            <button *ngIf="editing" pButton pRipple type="button" pSaveEditableRow (click)="onRowEditSave(user)" class="p-button-rounded p-button-text p-button-success mr-2">
-                              <i class="pi pi-check"></i> <!-- Icono de marca de verificación para "Guardar" -->
-                            </button>
-                          
-                            <!-- Cancelar edición -->
-                            <button *ngIf="editing" pButton pRipple type="button" pCancelEditableRow (click)="onRowEditCancel(user, ri)" class="p-button-rounded p-button-text p-button-danger">
-                              <i class="pi pi-times"></i> <!-- Icono de equis para "Cancelar" -->
-                            </button>
-                          </div>
-                    </td>
-                </tr>
-            </ng-template>
-            </p-table>
-        </div>
-    </section>
-    
-</body>
-</html>
+<mat-drawer-container class="example-container">
+  <mat-drawer mode="side" opened>
+    <!-- Aquí puedes colocar tu contenido de la barra lateral -->
+    <ul>
+      <a [routerLink]="'/users-list'">Ir a la lista de usuarios</a>
+      <li><a [routerLink]="'/user-create'">Crear Usuario</a></li>
+    </ul>
+  </mat-drawer>
+  <mat-drawer-content>
+      <!-- Contenido principal -->
+      <header>
+        <a [routerLink]="'/'">
+          <h1>Bienvenido a nuestra aplicación</h1>
+        </a>
+      </header>
+      <!-- Aquí es donde Angular renderizará dinámicamente el contenido de tus componentes -->
+      <router-outlet></router-outlet>
+  </mat-drawer-content>
+</mat-drawer-container>
+
+<!-- Footer -->
+<footer>
+<div class="footer-content">
+  <p>Derechos de autor © 2023 - Alltic</p>
+  <img src="/assets/alltic-logo.png" alt="." class="footer-icon">
+</div>
+</footer>
+
+<!-- <app-root></app-root> -->

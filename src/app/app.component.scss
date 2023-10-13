@@ -1,0 +1,58 @@
+/* Estilos para el header */
+header {
+  background-color: #007bff;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1; /* Asegura que el header esté por encima de otros elementos */
+}
+
+/* Estilos para la barra lateral (mat-drawer) */
+mat-drawer {
+  width: 240px;
+  background-color: #3653e5;
+  position: fixed;
+  top: 80px; /* Alinea la parte superior de la barra lateral justo debajo del header */
+  bottom: 0;
+  flex-shrink: 0;
+}
+
+/* Estilos para el contenido principal (mat-drawer-content) */
+mat-drawer-content {
+  flex: 1;
+  padding: 16px;
+  color: rgb(0, 0, 0);
+  margin-top: 80px; /* Añade un margen superior igual a la altura del header */
+  position: fixed;
+  top: 80px; /* Alinea la parte superior del contenido principal justo debajo del header */
+  bottom: 0;
+  left: 290px; /* Deja espacio para la barra lateral */
+  right: 0;
+  overflow-y: auto; /* Agrega desplazamiento vertical si es necesario */
+}
+
+/* Estilos para el footer */
+footer {
+  background-color: #333; /* Color de fondo del footer */
+  height: 60px; /* Altura del footer */
+  display: flex;
+  justify-content: space-between; /* Alinear contenido al principio y al final */
+  align-items: center;
+  color: white; /* Color del texto del footer */
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+}
+
+.footer-icon {
+  max-height: 24px; /* Ajusta la altura máxima de la imagen según tus necesidades */
+  margin-right: 10px; /* Agrega un margen a la derecha de la imagen */
+}

@@ -7,11 +7,12 @@ import { UserDeleteComponent } from './user-delete/user-delete.component';
 import { UserCreateComponent } from './user-create/user-create.component';
 
 const routes: Routes = [
-  { path: 'users', component: UserListComponent },
-  { path: 'users/:id', component: UserDetailsComponent },
-  { path: 'users/create', component: UserCreateComponent },
-  { path: 'users/edit/:id', component: UserEditComponent },
-  { path: 'users/delete/:id', component: UserDeleteComponent },
+  { path: '', redirectTo: 'users', pathMatch: 'full' },
+  { path: 'users-list', component: UserListComponent },
+  { path: 'user-details/:id', component: UserDetailsComponent },
+  { path: 'user-create', component: UserCreateComponent },
+  { path: 'user-edit/edit/:id', component: UserEditComponent },
+  { path: 'user-delete/delete/:id', component: UserDeleteComponent },
 ];
 
 
