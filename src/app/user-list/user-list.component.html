@@ -1,57 +1,45 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Usuarios</title>
-</head>
-<body>
-    <header>
-        <h1>Usuarios</h1>
-    </header>
-    <section>
-      <div id="encabezado-section">
-        <h2>Lista de Usuarios</h2>
-        
-        <!-- Botón de PrimeNG "Primary" -->
-        <p-button label="+ Nuevo" [routerLink]="['/user-create']"></p-button>
-      </div>
-    
-        
-        <!-- Asegúrate de que users esté definido y tenga datos -->
-        <div *ngIf="users && users.length > 0">
-            <p-table [value]="users" dataKey="id" editMode="row" [tableStyle]="{}">
-            <!-- Encabezados de la tabla -->
-            <ng-template pTemplate="header">
-                <tr>
-                <th style="width:10%">ID</th>
-                <th style="width:10%">Name</th>
-                <th style="width:10%">Email</th>
-                <th style="width:10%">Username</th>
-                <th style="width:500px">Mensajes</th>
-                </tr>
-            </ng-template>
-    
-            <!-- Cuerpo de la tabla -->
-            <ng-template pTemplate="body" let-user let-editing="editing" let-ri="rowIndex">
-                <tr [pEditableRow]="user">
-                    <td>{{ user.id }}</td>
-                    <td>{{ user.name }}</td>
-                    <td>{{ user.email }}</td>
-                    <td>{{ user.username }}</td>
-                    <td>{{ user.message }}</td> <!-- Agregar esta columna para mostrar el mensaje del tuit -->
-                    <td>
-                        <!-- Botones de edición y acciones -->
-                        <div class="flex align-items-center justify-content-center gap-2">                 
-                            <!-- Editar usuario (iniciar edición) -->
-                            <button pButton pRipple type="button" pInitEditableRow (click)="onRowEditInit(user)">
-                              Edit
-                            </button>
-                          </div>
-                    </td>
-                </tr>
-            </ng-template>
-            </p-table>
-        </div>
-    </section>
-    
-</body>
-</html>
+<section>
+    <div id="encabezado-section">
+      <h2>Lista de Usuarios</h2>
+  
+      <!-- Botón de PrimeNG "Primary" -->
+      <p-button label="+ Nuevo" [routerLink]="['/user-create']"></p-button>
+    </div>
+  
+    <!-- Asegúrate de que users esté definido y tenga datos -->
+    <div *ngIf="users && users.length > 0">
+      <p-table [value]="users" dataKey="id" editMode="row" [tableStyle]="{}">
+        <!-- Encabezados de la tabla -->
+        <ng-template pTemplate="header">
+          <tr>
+            <th style="width:10%">ID</th>
+            <th style="width:10%">Name</th>
+            <th style="width:10%">Email</th>
+            <th style="width:10%">Username</th>
+            <th style="width:10%">Message</th> <!-- Actualizar el encabezado -->
+          </tr>
+        </ng-template>
+  
+        <!-- Cuerpo de la tabla -->
+        <ng-template pTemplate="body" let-user let-editing="editing" let-ri="rowIndex">
+          <tr [pEditableRow]="user">
+            <td>{{ user.id }}</td>
+            <td>{{ user.user.name }}</td> <!-- Accede a la propiedad "name" dentro de "user" -->
+            <td>{{ user.user.email }}</td> <!-- Accede a la propiedad "email" dentro de "user" -->
+            <td>{{ user.user.username }}</td> <!-- Accede a la propiedad "username" dentro de "user" -->
+            <td>{{ user.message }}</td> <!-- Muestra el mensaje del tuit -->
+            <td>
+              <!-- Botones de edición y acciones -->
+              <div class="flex align-items-center justify-content-center gap-2">
+                <!-- Editar usuario (iniciar edición) -->
+                <button pButton pRipple type="button" pInitEditableRow (click)="onRowEditInit(user)">
+                  Edit
+                </button>
+              </div>
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+  </section>
+  

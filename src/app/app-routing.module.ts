@@ -7,13 +7,15 @@ import { UserDeleteComponent } from './user-delete/user-delete.component';
 import { UserCreateComponent } from './user-create/user-create.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'users', pathMatch: 'full' },
+  { path: '', redirectTo: '/users', pathMatch: 'full' },
+  { path: 'users', component: UserListComponent }, // Agregar una coma aquí
   { path: 'users-list', component: UserListComponent },
   { path: 'user-details/:id', component: UserDetailsComponent },
   { path: 'user-create', component: UserCreateComponent },
   { path: 'user-edit/edit/:id', component: UserEditComponent },
   { path: 'user-delete/delete/:id', component: UserDeleteComponent },
 ];
+
 
 
 
