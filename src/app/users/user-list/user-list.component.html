@@ -1,10 +1,19 @@
 <section>
-    <div id="encabezado-section">
-      <h2>Lista de Usuarios</h2>
-  
-      <!-- Botón de PrimeNG "Primary" -->
-      <p-button label="+ Nuevo" [routerLink]="['/user-create']"></p-button>
+  <div id="encabezado-section">
+    <h2>Lista de Usuarios</h2>
+    <p-button label="+ Nuevo" [routerLink]="['/user-create']"></p-button>
+    <div class="form-group">
+      <label for="search">Search</label>
+      <input type="text" (keyup)="search()" id="search" [(ngModel)]="searchText" placeholder="Find by name">
     </div>
+  </div>
+  
+  <div *ngIf="filteredUsers && filteredUsers.length > 0">
+    <p-table [value]="filteredUsers" dataKey="id" editMode="row" [tableStyle]="{}">
+      <!-- Encabezados y cuerpo de la tabla (sin cambios) -->
+    </p-table>
+  </div>
+  
   
     <!-- Asegúrate de que users esté definido y tenga datos -->
     <div *ngIf="users && users.length > 0">

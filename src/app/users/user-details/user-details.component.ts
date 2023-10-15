@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { UserService } from '../user.service';
+import { UserService } from '../../user.service';
 
 @Component({
-  selector: 'app-user-delete',
-  templateUrl: './user-delete.component.html',
-  styleUrls: ['./user-delete.component.scss']
+  selector: 'app-user-details',
+  templateUrl: './user-details.component.html',
+  styleUrls: ['./user-details.component.scss']
 })
-export class UserDeleteComponent implements OnInit {
+export class UserDetailsComponent implements OnInit {
   user: any; // Aquí almacenaremos los detalles del usuario
 
   constructor(private route: ActivatedRoute, private userService: UserService) {}
@@ -15,7 +15,7 @@ export class UserDeleteComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe((params) => {
       const userId = params['id'];
-      this.loadUserDetails(userId); // Llama a la función para cargar los detalles del usuario al iniciar el componente
+      this.loadUserDetails(userId); // Llama a la función para cargar los detalles del usuario
     });
   }
 
@@ -26,17 +26,6 @@ export class UserDeleteComponent implements OnInit {
       },
       (error) => {
         console.error('Error al cargar los detalles del usuario:', error);
-      }
-    );
-  }
-
-  deleteUser() {
-    this.userService.deleteUser(this.user.id).subscribe(
-      () => {
-        console.log('Usuario eliminado con éxito.');
-      },
-      (error) => {
-        console.error('Error al eliminar el usuario:', error);
       }
     );
   }

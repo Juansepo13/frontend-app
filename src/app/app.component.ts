@@ -10,6 +10,7 @@ import { Router } from '@angular/router'; // Agrega la importación de Router
 })
 export class AppComponent implements OnInit {
   title = 'frontend-app';
+  searchText= "";
   users: any[] = [];
   plusIcon = PrimeIcons.PLUS;
 

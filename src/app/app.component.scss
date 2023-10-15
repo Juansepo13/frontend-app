@@ -1,6 +1,8 @@
 /* Estilos para el header */
 header {
-  background-color: #007bff;
+  background-color: rgb(218, 227, 245);
+  color: hsl(147, 138%, 218%);
+
   height: 80px;
   display: flex;
   justify-content: center;
@@ -16,7 +18,7 @@ header {
 /* Estilos para la barra lateral (mat-drawer) */
 mat-drawer {
   width: 240px;
-  background-color: #3653e5;
+  background-color:rgb(218, 227, 245);
   position: fixed;
   top: 80px; /* Alinea la parte superior de la barra lateral justo debajo del header */
   bottom: 0;
@@ -35,6 +37,7 @@ mat-drawer-content {
   left: 100px; /* Deja espacio para la barra lateral */
   right: 0;
   overflow-y: auto; /* Agrega desplazamiento vertical si es necesario */
+  max-height: calc(100vh - 80px);
 }
 
 /* Estilos para el footer */

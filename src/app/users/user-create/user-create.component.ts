@@ -1,8 +1,8 @@
 import { Component, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
-import { UserService } from '../user.service';
+import { HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import { UserService } from '../../user.service';
 
 @Component({
   selector: 'app-user-create',

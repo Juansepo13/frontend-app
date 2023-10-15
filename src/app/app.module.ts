@@ -13,14 +13,17 @@ import { TableModule } from 'primeng/table';
 import { ToastModule } from 'primeng/toast';
 import { DropdownModule } from 'primeng/dropdown';
 import { UserService } from './user.service'; // Importa el servicio UserService
-import { UserListComponent } from './user-list/user-list.component';
-import { UserDetailsComponent } from './user-details/user-details.component';
-import { UserEditComponent } from './user-edit/user-edit.component';
-import { UserDeleteComponent } from './user-delete/user-delete.component';
-import { UserCreateComponent } from './user-create/user-create.component';
+import { UserListComponent } from './users/user-list/user-list.component';
+import { UserDetailsComponent } from './users/user-details/user-details.component';
+import { UserEditComponent } from './users/user-edit/user-edit.component';
+import { UserDeleteComponent } from './users/user-delete/user-delete.component';
+import { UserCreateComponent } from './users/user-create/user-create.component';
 import { MatIconModule } from '@angular/material/icon';
 import { ButtonModule } from 'primeng/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatDialogModule } from '@angular/material/dialog';
+import { InputTextModule } from 'primeng/inputtext';
+
 
 
 @NgModule({
@@ -46,6 +49,8 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     MatIconModule,
     ButtonModule,
     MatSidenavModule,
+    MatDialogModule,
+    InputTextModule,
   ],
   providers: [PrimeNGConfig, UserService], // Agrega UserService y TuitService como proveedores
   bootstrap: [AppComponent],

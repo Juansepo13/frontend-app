@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { UserListComponent } from './user-list/user-list.component';
-import { UserDetailsComponent } from './user-details/user-details.component';
-import { UserEditComponent } from './user-edit/user-edit.component';
-import { UserDeleteComponent } from './user-delete/user-delete.component';
-import { UserCreateComponent } from './user-create/user-create.component';
+import { UserListComponent } from './users/user-list/user-list.component';
+import { UserDetailsComponent } from './users/user-details/user-details.component';
+import { UserEditComponent } from './users/user-edit/user-edit.component';
+import { UserDeleteComponent } from './users/user-delete/user-delete.component';
+import { UserCreateComponent } from './users/user-create/user-create.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/users', pathMatch: 'full' },
-  { path: 'users', component: UserListComponent }, // Agregar una coma aquí
+  { path: '', redirectTo: '/', pathMatch: 'full' },
+  { path: 'users', component: UserListComponent }, 
   { path: 'users-list', component: UserListComponent },
   { path: 'user-details/:id', component: UserDetailsComponent },
   { path: 'user-create', component: UserCreateComponent },
