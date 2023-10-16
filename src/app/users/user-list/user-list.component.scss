@@ -1,0 +1,87 @@
+/* Estilos para el contenedor principal que envuelve a .table-header y .rectangle-1012 */
+.table-complete {
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  border-radius: 8px;
+  width: 100%; /* Define el ancho que desees */
+  padding: 8px;
+  gap: 8px;
+}
+
+/* Estilos para los elementos dentro de .table-complete */
+.table-complete .table-header,
+.table-complete .rectangle-1012 {
+  width: 100%; /* Ancho completo para los elementos hijos */
+}
+
+/* Estilos para el contenido de la tabla */
+.table-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--darkcolors-light-grey-3, #f8f9fa);
+  border-radius: 8px;
+  padding: 8px;
+  gap: 8px;
+}
+
+/* Estilos para el contenido dentro de .rectangle-1012 */
+.rectangle-1012 {
+  display: flex;
+  justify-content: space-between;
+  background: #dae3f5;
+  border-radius: 8px;
+  flex: 1; /* Rellena todo el espacio disponible en ancho */
+  flex-direction: column;
+  margin: 0;
+}
+
+/* Estilos para el contenido de la tabla dentro de .rectangle-1012 */
+.rectangle-1012 p-table {
+  flex: 1;
+}
+
+.rectangle-1012 p-datatable thead th {
+  text-align: center;
+}
+
+rectangle-1012 button.pButton.pRipple[type="button"] {
+  padding: 5px 10px;
+}
+
+/* Estilos para la barra de búsqueda */
+.rectangle-1012 .search-bar {
+  padding: 10px;
+  background-color: var(--darkcolors-light-grey-3, #f8f9fa);
+  border-radius: 4px;
+  margin-top: 10px;
+}
+
+/* Estilos para el botón de búsqueda en la barra de búsqueda */
+.rectangle-1012 .search-bar p-button {
+  margin-left: 10px;
+}
+
+/* Estilos para el ícono "Cerrar" en la barra de búsqueda */
+.rectangle-1012 .search-bar .pi-times {
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* Estilos para el contenido principal (mat-drawer-content) */
+at-drawer-content {
+  flex: 1;
+  padding: 16px;
+  color: rgb(0, 0, 0);
+  margin-top: 80px;
+  position: fixed;
+  top: 80px;
+  bottom: 60px;
+  left: 100px;
+  right: 0;
+  overflow-y: auto;
+  max-height: calc(100vh - 140px);
+}
+
+

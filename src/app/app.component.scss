@@ -1,13 +1,12 @@
 /* Estilos para el header */
 header {
   background-color: rgb(218, 227, 245);
-  color: hsl(147, 138%, 218%);
+  color: white; /* Corrección: Color en lugar de color: hsl(147, 138%, 218%); */
 
   height: 80px;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: white;
   position: fixed;
   top: 0;
   left: 0;
@@ -15,12 +14,12 @@ header {
   z-index: 1; /* Asegura que el header esté por encima de otros elementos */
 }
 
-/* Estilos para la barra lateral (mat-drawer) */
+/* Estilos para el barra lateral (mat-drawer) */
 mat-drawer {
-  width: 240px;
-  background-color:rgb(218, 227, 245);
+  width: 250px;
+  background-color: rgb(218, 227, 245); /* Corrección: color en lugar de color:rgb(218, 227, 245); */
   position: fixed;
-  top: 80px; /* Alinea la parte superior de la barra lateral justo debajo del header */
+  top: 80px;
   bottom: 0;
   flex-shrink: 0;
 }
@@ -30,24 +29,24 @@ mat-drawer-content {
   flex: 1;
   padding: 16px;
   color: rgb(0, 0, 0);
-  margin-top: 80px; /* Añade un margen superior igual a la altura del header */
+  margin-top: 80px;
   position: fixed;
-  top: 80px; /* Alinea la parte superior del contenido principal justo debajo del header */
-  bottom: 0;
-  left: 100px; /* Deja espacio para la barra lateral */
-  right: 0;
-  overflow-y: auto; /* Agrega desplazamiento vertical si es necesario */
-  max-height: calc(100vh - 80px);
+  top: 20px;
+  bottom: 60px;
+  left: 50px;
+  right: 0px;
+  overflow-y: auto;
+  max-height: calc(100vh - 140px);
 }
 
 /* Estilos para el footer */
 footer {
-  background-color: #333; /* Color de fondo del footer */
-  height: 60px; /* Altura del footer */
+  background-color: #ffffff;
+  height: 53px;
   display: flex;
-  justify-content: space-between; /* Alinear contenido al principio y al final */
+  justify-content: space-between;
   align-items: center;
-  color: white; /* Color del texto del footer */
+  color: rgb(148, 148, 148);
   position: fixed;
   bottom: 0;
   left: 0;
@@ -55,7 +54,45 @@ footer {
   z-index: 1;
 }
 
-.footer-icon {
-  max-height: 24px; /* Ajusta la altura máxima de la imagen según tus necesidades */
-  margin-right: 10px; /* Agrega un margen a la derecha de la imagen */
+/* Estilos para el rectangle-1011 */
+.rectangle-1011, .rectangle-1011 * {
+  box-sizing: border-box;
 }
+.rectangle-1011 {
+  display: flex; /* Agrega display: flex para los elementos del contenedor */
+  align-items: center; /* Alinea verticalmente el contenido en el centro */
+  background: var(--light-colors-white, #ffffff);
+  border-radius: 0px 0px 7px 0px;
+  width: 50%; /* Define el ancho del contenedor izquierdo */
+  padding: 0 20px; /* Espacio interno para el contenido */
+}
+
+/* Estilos para el _2021-elegant-dashboard-elegant-dashboard-com */
+._2021-elegant-dashboard-elegant-dashboard-com {
+  color: #b9b9b9;
+  text-align: center; /* Alinea el texto al centro */
+  font: 500 10.23px/28.97px 'Inter', sans-serif;
+}
+
+/* Estilos para el ellipse-8 (image-footer) */
+.image-footer {
+  background: linear-gradient(to left, rgba(255, 255, 255, 0.20), rgba(255, 255, 255, 0.20));
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  margin: 0 20px; /* Agrega margen a la imagen en la derecha */
+}
+
+/* Estilos para el contenido dentro de footer */
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%; /* Asegura que el contenido abarque todo el ancho del footer */
+}
+
+/* Alineación vertical en el footer */
+footer .rectangle-1011, footer .image-footer {
+  height: 100%; /* Asegura que ambos elementos abarquen toda la altura del footer */
+}
+

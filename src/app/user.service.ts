@@ -33,9 +33,8 @@ export class UserService {
     
   }
 
-  updateUser(userId: number, updatedMessage: string): Observable<any> {
-    const userData = { message: updatedMessage }; // Crear un objeto con el mensaje actualizado
-    return this.http.patch<any>(`${this.apiUrl}/${userId}`, userData);
-  }
+  updateUser(userId: number, user: { message: string }): Observable<any> {
+    return this.http.patch<any>(`${this.apiUrl}/${userId}`, user);
+  }  
   
 }

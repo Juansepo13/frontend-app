@@ -1,54 +1,59 @@
-<section>
-  <div id="encabezado-section">
-    <h2>Lista de Usuarios</h2>
-    <p-button label="+ Nuevo" [routerLink]="['/user-create']"></p-button>
-    <div class="form-group">
-      <label for="search">Search</label>
-      <input type="text" (keyup)="search()" id="search" [(ngModel)]="searchText" placeholder="Find by name">
+<h1>Lista de Usuarios</h1>
+<div class="table-complete">
+  <div class="table-header">
+    <p-button label="+ Nuevo" (click)="openCreateUserDialog()"></p-button>
+    
+    <div class="search-bar">
+      <div class="p-inputgroup">
+        <input type="text" pInputText placeholder="Buscar por nombre" [(ngModel)]="searchText" (keyup)="search()" />
+        <span class="p-inputgroup-addon">
+          <i class="pi pi-search" style="font-size: 1rem;"></i>
+        </span>
+      </div>
     </div>
+    
   </div>
-  
-  <div *ngIf="filteredUsers && filteredUsers.length > 0">
-    <p-table [value]="filteredUsers" dataKey="id" editMode="row" [tableStyle]="{}">
-      <!-- Encabezados y cuerpo de la tabla (sin cambios) -->
-    </p-table>
+
+  <div class="rectangle-1012">
+    <section>
+      <div *ngIf="filteredUsers && filteredUsers.length > 0">
+        <p-table [value]="filteredUsers" dataKey="id" editMode="row" [tableStyle]="{}">
+          <!-- Encabezados y cuerpo de la tabla (sin cambios) -->
+        </p-table>
+      </div>
+
+      <div *ngIf="users && users.length > 0">
+        <p-table [value]="users" dataKey="id" editMode="row" [tableStyle]="{}">
+          <ng-template pTemplate="header">
+            <tr>
+              <th style="width: 10%">ID</th>
+              <th style="width: 20%">Name</th>
+              <th style="width: 20%">Email</th>
+              <th style="width: 20%">Username</th>
+              <th style="width: 20%">Message</th>
+              <th style="width: 10%"></th> <!-- Columna vacía para el botón de Edit -->
+            </tr>
+          </ng-template>
+          
+
+          <!-- Cuerpo de la tabla -->
+          <ng-template pTemplate="body" let-user let-editing="editing" let-ri="rowIndex">
+            <tr [pEditableRow]="user">
+              <td>{{ user.id }}</td>
+              <td>{{ user.user.name }}</td>
+              <td>{{ user.user.email }}</td>
+              <td>{{ user.user.username }}</td>
+              <td>{{ user.message }}</td>
+              <td>
+                <!-- Botón de edición aquí -->
+                <a [routerLink]="['/user-edit', user.id]">
+                  <i class="pi pi-pencil" style="font-size: 1.25rem; color: blue;" (click)="openEditUserDialog()"></i>
+                </a>                
+              </td>
+            </tr>
+          </ng-template>
+        </p-table>
+      </div>
+    </section>
   </div>
-  
-  
-    <!-- Asegúrate de que users esté definido y tenga datos -->
-    <div *ngIf="users && users.length > 0">
-      <p-table [value]="users" dataKey="id" editMode="row" [tableStyle]="{}">
-        <!-- Encabezados de la tabla -->
-        <ng-template pTemplate="header">
-          <tr>
-            <th style="width:10%">ID</th>
-            <th style="width:10%">Name</th>
-            <th style="width:10%">Email</th>
-            <th style="width:10%">Username</th>
-            <th style="width:10%">Message</th> <!-- Actualizar el encabezado -->
-          </tr>
-        </ng-template>
-  
-        <!-- Cuerpo de la tabla -->
-        <ng-template pTemplate="body" let-user let-editing="editing" let-ri="rowIndex">
-          <tr [pEditableRow]="user">
-            <td>{{ user.id }}</td>
-            <td>{{ user.user.name }}</td> <!-- Accede a la propiedad "name" dentro de "user" -->
-            <td>{{ user.user.email }}</td> <!-- Accede a la propiedad "email" dentro de "user" -->
-            <td>{{ user.user.username }}</td> <!-- Accede a la propiedad "username" dentro de "user" -->
-            <td>{{ user.message }}</td> <!-- Muestra el mensaje del tuit -->
-            <td>
-              <!-- Botones de edición y acciones -->
-              <div class="flex align-items-center justify-content-center gap-2">
-                <!-- Editar usuario (iniciar edición) -->
-                <button pButton pRipple type="button" pInitEditableRow (click)="onRowEditInit(user)">
-                  Edit
-                </button>
-              </div>
-            </td>
-          </tr>
-        </ng-template>
-      </p-table>
-    </div>
-  </section>
-  
+</div>

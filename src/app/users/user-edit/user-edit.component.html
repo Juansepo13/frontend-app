@@ -1,1 +1,26 @@
-<p>user-edit works!</p>
+<div class="card">
+    <section>
+      <div class="card-title">
+        <h2>Editar Usuario</h2>
+      </div>
+  
+      <div class="card-content">
+        <p>Información de contacto</p>
+      </div>
+  
+      <div class="card-content">
+        <form #userForm="ngForm">
+          <div class="form-group">
+            <label for="message">Mensaje:</label>
+            <input type="text" id="message" name="message" [(ngModel)]="user.message" required>
+          </div>
+        </form>
+      </div>
+  
+      <span class="p-buttonset">
+        <button pButton pRipple label="Guardar" icon="pi pi-check" (click)="updateUser()" [disabled]="!userForm.valid"></button>
+        <button pButton pRipple label="Cancelar" icon="pi pi-times" (click)="cancelEdit()"></button>
+      </span>
+    </section>
+  </div>
+  
