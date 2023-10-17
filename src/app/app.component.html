@@ -1,11 +1,4 @@
 <mat-drawer-container class="example-container">
-  <mat-drawer mode="side" opened>
-    <!-- Aquí puedes colocar tu contenido de la barra lateral -->
-    <ul>
-      <a [routerLink]="'/users-list'">Ir a la lista de usuarios</a>
-      <li><a [routerLink]="'/user-create'">Crear Usuario</a></li>
-    </ul>
-  </mat-drawer>
   <mat-drawer-content>
       <!-- Contenido principal -->
       <header>
@@ -16,6 +9,14 @@
       <!-- Aquí es donde Angular renderizará dinámicamente el contenido de tus componentes -->
       <router-outlet></router-outlet>
   </mat-drawer-content>
+  <mat-drawer mode="side" opened>
+    <!-- Aquí puedes colocar tu contenido de la barra lateral -->
+    <ul>
+      <li><a [routerLink]="'/users-list'">Ir a la lista de usuarios</a></li>
+      <!-- <li><a [routerLink]="'/user-create'">Crear Usuario</a></li> -->
+    </ul>
+  </mat-drawer>
+  
 </mat-drawer-container>
 
 <!-- Footer -->

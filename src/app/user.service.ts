@@ -26,11 +26,11 @@ export class UserService {
   createUser(user: any): Observable<any> {
     return this.http.post<any>(this.apiUrl, user);
   }
-
-  editUser(id: number, tuit: any): Observable<any> {
-    return this.http.patch<any>(`${this.apiUrl}/${id}`, tuit, this.httpOptions);
-  }   
-
+ 
+  editUser(id: number, updatedUserData: any): Observable<any> {
+    return this.http.patch(`${this.apiUrl}/${id}`, updatedUserData, this.httpOptions);
+  }
+  
   deleteUser(id: number): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }

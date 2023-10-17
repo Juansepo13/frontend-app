@@ -1,32 +1,38 @@
 <div class="div-padre-dialog-user-edit">
   <div class="card-title">
-    <h2>Editar Usuario</h2>
+    <h2>Detalles del Usuario</h2>
   </div>
 
   <div class="div-central">
-    <div class="card-content">
-      <p>Información de contacto</p>
+    <div class="card-content-formulario">
+      <h2>Detalles del Usuario</h2>
+      <div class="form-group">
+        <label for="name">Nombre:</label>
+        <p>{{ user?.name }}</p>
+      </div>
+      <div class="form-group">
+        <label for="email">Correo Electrónico:</label>
+        <p>{{ user?.email }}</p>
+      </div>
+      <div class="form-group">
+        <label for="username">Nombre de Usuario:</label>
+        <p>{{ user?.username }}</p>
+      </div>
+      <div class="form-group">
+        <label for="message">Mensaje:</label>
+        <p>{{ user?.message }}</p>
+      </div>
     </div>
 
     <div class="col-12 md:col-4">
       <p-avatar label="P" styleClass="mr-2" size="xlarge" shape="circle"></p-avatar>
-      <h5></h5>
-    </div>
-
-    <div class="card-content">
-      <form #userForm="ngForm">
-        <div class="form-group">
-          <label for="message">Mensaje:</label>
-          <input type="text" [(ngModel)]="updatedTuit" name="updatedTuit" required>
-        </div>
-      </form>
+      <h5>{{ user?.name }}</h5>
     </div>
   </div>
 
   <div class="div-inferior-botones">
     <span class="p-buttonset">
-      <button pButton pRipple label="Guardar" icon="pi pi-check" (click)="editUser()" [disabled]="!userForm.valid"></button>
-      <button pButton pRipple label="Cancelar" icon="pi pi-times" (click)="confirmCancel()"></button>
+      <button pButton pRipple label="Cerrar" icon="pi pi-times" (click)="closeDetailsUserDialog()"></button>
     </span>
   </div>
 </div>

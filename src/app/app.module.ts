@@ -25,6 +25,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { InputTextModule } from 'primeng/inputtext';
 import { AvatarModule } from 'primeng/avatar';
 import { AvatarGroupModule } from 'primeng/avatargroup';
+import { CascadeSelectModule } from 'primeng/cascadeselect';
+
 
 
 @NgModule({
@@ -54,6 +56,7 @@ import { AvatarGroupModule } from 'primeng/avatargroup';
     InputTextModule,  
     AvatarModule,
     AvatarGroupModule,
+    CascadeSelectModule,
   ],
   providers: [PrimeNGConfig, UserService], // Agrega UserService y TuitService como proveedores
   bootstrap: [AppComponent],

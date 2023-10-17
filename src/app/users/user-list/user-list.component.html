@@ -2,6 +2,7 @@
 <div class="table-complete">
   <div class="table-header">
     <p-button label="+ Nuevo" (click)="openCreateUserDialog()"></p-button>
+    <i class="pi pi-trash custom-trash-icon" (click)="deleteUser()"></i>
     
     <div class="search-bar">
       <div class="p-inputgroup">
@@ -26,12 +27,13 @@
         <p-table [value]="users" dataKey="id" editMode="row" [tableStyle]="{}">
           <ng-template pTemplate="header">
             <tr>
-              <th style="width: 10%">ID</th>
-              <th style="width: 20%">Name</th>
+              <th style="width: 8%">ID</th>
+              <th style="width: 12%">Name</th>
               <th style="width: 20%">Email</th>
-              <th style="width: 20%">Username</th>
-              <th style="width: 20%">Message</th>
-              <th style="width: 10%"></th> <!-- Columna vacía para el botón de Edit -->
+              <th style="width: 10%">Username</th>
+              <th style="width: 40%">Message</th>
+              <th style="width: 5%"></th> 
+              <th style="width: 5%"></th> 
             </tr>
           </ng-template>
           
@@ -45,8 +47,11 @@
               <td>{{ user.user.username }}</td>
               <td>{{ user.message }}</td>
               <td>
-                <i class="pi pi-pencil" style="font-size: 1.25rem; color: blue;" (click)="openEditUserDialog()"></i>
-              </td>              
+                <i class="pi pi-pencil" style="font-size: 1.25rem; color:blue;" (click)="openEditUserDialog(user.id)"></i>
+              </td>
+              <td>
+                <i class="pi pi-search" style="font-size: 1.5rem; color: blue;" (click)="openDetailsUserDialog(user.id)" ></i>
+              </td>
             </tr>
           </ng-template>
         </p-table>

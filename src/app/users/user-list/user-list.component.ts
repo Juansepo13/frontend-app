@@ -7,6 +7,7 @@ import { UserCreateComponent } from '../user-create/user-create.component';
 import { UserEditComponent } from '../user-edit/user-edit.component';
 import { UserDeleteComponent } from '../user-delete/user-delete.component';
 
+
 @Component({
   selector: 'app-user-list',
   templateUrl: './user-list.component.html',
@@ -67,15 +68,40 @@ export class UserListComponent implements OnInit {
     });
   }
 
-  openEditUserDialog(...args: []): void {
+  openEditUserDialog(userId: number): void {
     const dialogRef = this.dialog.open(UserEditComponent, {
       width: '600px',
       height: '700px',
-      backdropClass: 'custom-dialog-background' // Clase CSS personalizada para el fondo
+      backdropClass: 'custom-dialog-background', // Clase CSS personalizada para el fondo
+      data: { userId } // Pasamos el ID del usuario al componente de edición
     });
-
+  
     dialogRef.afterClosed().subscribe(result => {
       console.log('El diálogo de edición se ha cerrado.');
     });
+  }
+
+  openDetailsUserDialog(userId: number): void {
+    this.userService.getUserById(userId).subscribe(
+      (userToDisplay) => {
+        const dialogRef = this.dialog.open(UserEditComponent, {
+          width: '600px',
+          height: '700px',
+          backdropClass: 'custom-dialog-background',
+          data: { user: userToDisplay }
+        });
+  
+        dialogRef.afterClosed().subscribe(result => {
+          console.log('El diálogo de detalles se ha cerrado.');
+        });
+      },
+      (error) => {
+        console.error('Error al obtener detalles del usuario:', error);
+      }
+    );
+  }  
+  
+  deleteUser() {
+    
   }
 }

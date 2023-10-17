@@ -68,10 +68,18 @@ export class UserCreateComponent {
   }
 
   // Función para mostrar la alerta de confirmación
+
   confirmCancel() {
-    if (confirm('¿Estás seguro de que deseas cancelar la creación del usuario?')) {
-      this.dialogRef.close('canceled');  // Cierra el diálogo después de cancelar
-      this.router.navigate(['/users-list']);
-    }
+    // Cierre directo del diálogo sin mostrar una confirmación
+    this.dialogRef.close('canceled');
+    this.router.navigate(['/users-list']);
   }
+  
+
+  // confirmCancel() {
+  //   if (confirm('¿Estás seguro de que deseas cancelar la creación del usuario?')) {
+  //     this.dialogRef.close('canceled');  // Cierra el diálogo después de cancelar
+  //     this.router.navigate(['/users-list']);
+  //   }
+  // }
 }
