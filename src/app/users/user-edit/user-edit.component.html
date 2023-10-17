@@ -1,38 +1,41 @@
 <div class="div-padre-dialog-user-edit">
   <div class="card-title">
-    <h2>Detalles del Usuario</h2>
+    <h2>Editar Usuario</h2>
   </div>
 
   <div class="div-central">
     <div class="card-content-formulario">
-      <h2>Detalles del Usuario</h2>
-      <div class="form-group">
-        <label for="name">Nombre:</label>
-        <p>{{ user?.name }}</p>
-      </div>
-      <div class="form-group">
-        <label for="email">Correo Electrónico:</label>
-        <p>{{ user?.email }}</p>
-      </div>
-      <div class="form-group">
-        <label for="username">Nombre de Usuario:</label>
-        <p>{{ user?.username }}</p>
-      </div>
-      <div class="form-group">
-        <label for="message">Mensaje:</label>
-        <p>{{ user?.message }}</p>
-      </div>
-    </div>
+      <h2>Editar Usuario</h2>
+      <form #userForm="ngForm">
+        <div class="form-group">
+          <label for="name">Nombre:</label>
+          <input type="text" [(ngModel)]="user.name" name="name" [disabled]="!editMode">
+        </div>
+        <div class="form-group">
+          <label for="email">Correo Electrónico:</label>
+          <input type="text" [(ngModel)]="user.email" name="email" [disabled]="!editMode">
+        </div>
+        <div class="form-group">
+          <label for="username">Nombre de Usuario:</label>
+          <input type="text" [(ngModel)]="user.username" name="username" [disabled]="!editMode">
+        </div>
+        <div class="form-group">
+          <label for="message">Mensaje:</label>
+          <input type="text" [(ngModel)]="user.message" name="message" required [disabled]="!editMode">
+        </div>
+      </form>
 
-    <div class="col-12 md:col-4">
-      <p-avatar label="P" styleClass="mr-2" size="xlarge" shape="circle"></p-avatar>
-      <h5>{{ user?.name }}</h5>
+      <div class="col-12 md:col-4">
+        <p-avatar label="P" styleClass="mr-2" size="xlarge" shape="circle"></p-avatar>
+        <h5>{{ user?.name }}</h5>
+      </div>
     </div>
   </div>
 
   <div class="div-inferior-botones">
     <span class="p-buttonset">
       <button pButton pRipple label="Cerrar" icon="pi pi-times" (click)="closeDetailsUserDialog()"></button>
+      <button pButton pRipple label="Guardar" icon="pi pi-check" (click)="saveChanges()" [disabled]="!editMode || userForm.invalid"></button>
     </span>
   </div>
 </div>
