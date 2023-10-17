@@ -23,7 +23,8 @@ import { ButtonModule } from 'primeng/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatDialogModule } from '@angular/material/dialog';
 import { InputTextModule } from 'primeng/inputtext';
-
+import { AvatarModule } from 'primeng/avatar';
+import { AvatarGroupModule } from 'primeng/avatargroup';
 
 
 @NgModule({
@@ -50,7 +51,9 @@ import { InputTextModule } from 'primeng/inputtext';
     ButtonModule,
     MatSidenavModule,
     MatDialogModule,
-    InputTextModule,
+    InputTextModule,  
+    AvatarModule,
+    AvatarGroupModule,
   ],
   providers: [PrimeNGConfig, UserService], // Agrega UserService y TuitService como proveedores
   bootstrap: [AppComponent],

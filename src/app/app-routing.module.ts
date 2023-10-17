@@ -12,7 +12,7 @@ const routes: Routes = [
   { path: 'users-list', component: UserListComponent },
   { path: 'user-details/:id', component: UserDetailsComponent },
   { path: 'user-create', component: UserCreateComponent },
-  { path: 'user-edit/edit/:id', component: UserEditComponent },
+  { path: 'user-edit/:id', component: UserEditComponent },
   { path: 'user-delete/delete/:id', component: UserDeleteComponent },
 ];
 

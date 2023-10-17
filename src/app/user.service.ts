@@ -1,13 +1,17 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http'; // Importa HttpHeaders
 import { Observable } from 'rxjs';
-
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
-  private apiUrl = 'http://localhost:3000/tuits'; // Reemplaza con la URL correcta de tu backend
+  private apiUrl = 'http://localhost:3000/tuits';
+  private httpOptions = { // Define httpOptions
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+    }),
+  };
 
   constructor(private http: HttpClient) {}
 
@@ -20,21 +24,18 @@ export class UserService {
   }
 
   createUser(user: any): Observable<any> {
-    return this.http.post<any>(this.apiUrl, user); // Agrega la ruta '/tuits' aquí
+    return this.http.post<any>(this.apiUrl, user);
   }
-  
 
-  editUser(id: number, user: any): Observable<any> {
-    return this.http.patch<any>(`${this.apiUrl}/${id}`, user);
-  }
+  editUser(id: number, tuit: any): Observable<any> {
+    return this.http.patch<any>(`${this.apiUrl}/${id}`, tuit, this.httpOptions);
+  }   
 
   deleteUser(id: number): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
-    
   }
 
-  updateUser(userId: number, user: { message: string }): Observable<any> {
-    return this.http.patch<any>(`${this.apiUrl}/${userId}`, user);
-  }  
-  
+  updateUser(Id: number, user: { message: string }): Observable<any> {
+    return this.http.patch(`${this.apiUrl}/${Id}`, user, this.httpOptions); // Utiliza this.httpOptions
+  }
 }

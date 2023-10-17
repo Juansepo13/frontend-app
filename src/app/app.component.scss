@@ -2,7 +2,6 @@
 header {
   background-color: rgb(218, 227, 245);
   color: white; /* Corrección: Color en lugar de color: hsl(147, 138%, 218%); */
-
   height: 80px;
   display: flex;
   justify-content: center;
@@ -16,7 +15,7 @@ header {
 
 /* Estilos para el barra lateral (mat-drawer) */
 mat-drawer {
-  width: 250px;
+  width: 180px;
   background-color: rgb(218, 227, 245); /* Corrección: color en lugar de color:rgb(218, 227, 245); */
   position: fixed;
   top: 80px;

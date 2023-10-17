@@ -45,11 +45,8 @@
               <td>{{ user.user.username }}</td>
               <td>{{ user.message }}</td>
               <td>
-                <!-- Botón de edición aquí -->
-                <a [routerLink]="['/user-edit', user.id]">
-                  <i class="pi pi-pencil" style="font-size: 1.25rem; color: blue;" (click)="openEditUserDialog()"></i>
-                </a>                
-              </td>
+                <i class="pi pi-pencil" style="font-size: 1.25rem; color: blue;" (click)="openEditUserDialog()"></i>
+              </td>              
             </tr>
           </ng-template>
         </p-table>

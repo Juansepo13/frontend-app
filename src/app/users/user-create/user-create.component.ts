@@ -3,7 +3,7 @@ import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { UserService } from '../../user.service';
-
+import { MatDialogRef } from '@angular/material/dialog';  // Importa MatDialogRef
 
 @Component({
   selector: 'app-user-create',
@@ -16,12 +16,16 @@ export class UserCreateComponent {
     email: '',
     username: '',
     password: '',
-    message: '' // Asegúrate de tener una coma aquí
+    message: ''
   };
 
   @ViewChild('userForm') userForm?: NgForm;
 
-  constructor(private router: Router, private userService: UserService) {}
+  constructor(
+    private router: Router, 
+    private userService: UserService,
+    private dialogRef: MatDialogRef<UserCreateComponent>  // Inyecta MatDialogRef
+  ) {}
 
   createUser() {
     if (this.userForm && this.userForm.valid) {
@@ -47,7 +51,8 @@ export class UserCreateComponent {
       this.userService.createUser(userData).subscribe(
         (data) => {
           console.log('Usuario creado con éxito:', data);
-          this.router.navigate(['/users']);
+          this.dialogRef.close('saved');  // Cierra el diálogo después de guardar
+          this.router.navigate(['/users-list']);
         },
         (error) => {
           console.error('Error al crear el usuario:', error);
@@ -65,6 +70,7 @@ export class UserCreateComponent {
   // Función para mostrar la alerta de confirmación
   confirmCancel() {
     if (confirm('¿Estás seguro de que deseas cancelar la creación del usuario?')) {
+      this.dialogRef.close('canceled');  // Cierra el diálogo después de cancelar
       this.router.navigate(['/users-list']);
     }
   }

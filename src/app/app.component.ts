@@ -14,7 +14,10 @@ export class AppComponent implements OnInit {
   users: any[] = [];
   plusIcon = PrimeIcons.PLUS;
 
-  constructor(private userService: UserService, private router: Router) {} // Agrega Router
+  constructor(
+    private userService: UserService, 
+    private router: Router
+    ) {}
 
   ngOnInit(): void {
     this.loadTuits();
@@ -32,18 +35,6 @@ export class AppComponent implements OnInit {
   // Función para navegar a la lista de usuarios
   navigateToUsersList() {
     this.router.navigate(['/users-list']);
-  }
-
-  // Resto de tu código
-  onRowEditInit(user: any) {
-    // Implementa la lógica para iniciar la edición del usuario
-  }
-  
-  onRowEditSave(user: any) {
-    // Implementa la lógica para guardar los cambios después de editar
-  }
-  
-  onRowEditCancel(user: any, ri: number) {
-    // Implementa la lógica para cancelar la edición
+    console.log('Navegando a la lista de usuarios');
   }
 }

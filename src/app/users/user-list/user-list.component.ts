@@ -7,7 +7,6 @@ import { UserCreateComponent } from '../user-create/user-create.component';
 import { UserEditComponent } from '../user-edit/user-edit.component';
 import { UserDeleteComponent } from '../user-delete/user-delete.component';
 
-
 @Component({
   selector: 'app-user-list',
   templateUrl: './user-list.component.html',
@@ -20,15 +19,15 @@ export class UserListComponent implements OnInit {
   toggleSearch: boolean = false;
 
   constructor(
-    private userService: UserService, 
-    private dialog: MatDialog, 
-    PrimeNGConfig: PrimeNGConfig) {}
-
+    private userService: UserService,
+    private dialog: MatDialog,
+    PrimeNGConfig: PrimeNGConfig,
+  ) {}
 
   ngOnInit() {
     this.loadUsers();
   }
-  
+
   loadUsers() {
     this.userService.getUsers().subscribe(
       (data) => {
@@ -58,13 +57,13 @@ export class UserListComponent implements OnInit {
 
   openCreateUserDialog(): void {
     const dialogRef = this.dialog.open(UserCreateComponent, {
-      width: '600px', // Ancho de 600px
-      height: '700px', // Alto de 700px
+      width: '600px',
+      height: '700px',
+      backdropClass: 'custom-dialog-background' // Clase CSS personalizada para el fondo
     });
-  
+
     dialogRef.afterClosed().subscribe(result => {
-      console.log('El diálogo se ha cerrado.');
-      // Puedes realizar acciones adicionales si es necesario después de que el diálogo se cierre.
+      console.log('El diálogo de creación se ha cerrado.');
     });
   }
 
@@ -72,24 +71,11 @@ export class UserListComponent implements OnInit {
     const dialogRef = this.dialog.open(UserEditComponent, {
       width: '600px',
       height: '700px',
+      backdropClass: 'custom-dialog-background' // Clase CSS personalizada para el fondo
     });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('El diálogo de edición se ha cerrado.');
-      // Realiza acciones adicionales si es necesario después de que el diálogo se cierre.
     });
-  }
-   
-
-  onRowEditInit(user: any) {
-    // Implementa la lógica para iniciar la edición del usuario
-  }
-
-  onRowEditSave(user: any) {
-    // Implementa la lógica para guardar los cambios después de editar
-  }
-
-  onRowEditCancel(user: any, ri: number) {
-    // Implementa la lógica para cancelar la edición
   }
 }

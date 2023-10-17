@@ -1,0 +1,54 @@
+.div-padre-dialog-user-edit {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  
+  .card-title {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 10px;
+  }
+  
+  .div-central {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+  }
+  
+  .card-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .col-12 {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding: 10px;
+  }
+  
+  .div-inferior-botones {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+    padding: 10px;
+  }
+  
+  .p-avatar {
+    max-width: 100%;
+    align-self: flex-end; /* Ubica la imagen a la derecha */
+  }
+  
+  .p-button {
+    font-size: 14px;
+    padding: 8px 12px;
+    margin: 5px; /* Agrega espacio entre los botones */
+  }
+  
