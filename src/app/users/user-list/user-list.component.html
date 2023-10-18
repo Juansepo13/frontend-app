@@ -28,11 +28,13 @@
         <p-table [value]="users" dataKey="id" editMode="row" [tableStyle]="{}">
           <ng-template pTemplate="header">
             <tr>
+              <th style="width: 4rem"><p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+            </th>
               <th pSortableColumn="id" style="width: 8%">ID <p-sortIcon field="id"></p-sortIcon></th>
               <th pSortableColumn="user.name" style="width: 10%">Name <p-sortIcon field="user.name"></p-sortIcon></th>
               <th pSortableColumn="user.email" style="width: 18%">Email <p-sortIcon field="user.email"></p-sortIcon></th>
               <th pSortableColumn="user.username" style="width: 10%">Username <p-sortIcon field="user.username"></p-sortIcon></th>
-              <th pSortableColumn="message" style="width: 39%">Message <p-sortIcon field="message"></p-sortIcon></th>
+              <th pSortableColumn="message" style="width: 34%">Message <p-sortIcon field="message"></p-sortIcon></th>
               <th style="width: 5%"></th> 
               <th style="width: 5%"></th> 
               <th style="width: 5%"></th> 
@@ -42,6 +44,7 @@
           <!-- Cuerpo de la tabla (sin cambios) -->
           <ng-template pTemplate="body" let-user let-editing="editing" let-ri="rowIndex">
             <tr [pEditableRow]="user">
+              <td><p-tableCheckbox [value]="userId"></p-tableCheckbox></td>
               <td>{{ user.id }}</td>
               <td>{{ user.user.name }}</td>
               <td>{{ user.user.email }}</td>

@@ -13,12 +13,12 @@ export class UserDeleteByIdComponent {
   constructor(public dialogRef: MatDialogRef<UserDeleteByIdComponent>, private userService: UserService) {}
 
   confirmDelete(): void {
-    // Aquí puedes utilizar this.userIdToDelete para eliminar el usuario con el ID ingresado
     // Asegúrate de validar el valor antes de realizar la eliminación
     if (this.userIdToDelete && !isNaN(this.userIdToDelete) && this.userIdToDelete > 0) {
       // Realiza la eliminación y luego cierra el diálogo
-      this.userService.deleteUser(this.userIdToDelete).subscribe(
+      this.userService.deleteUsers([this.userIdToDelete]).subscribe(
         () => {
+          // Realiza acciones después de eliminar el usuario
           this.dialogRef.close('deleted');
         },
         (error) => {

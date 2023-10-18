@@ -3,7 +3,8 @@ import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { UserService } from '../../user.service';
-import { MatDialogRef } from '@angular/material/dialog';  // Importa MatDialogRef
+import { MatDialogRef } from '@angular/material/dialog';
+import { EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-user-create',
@@ -21,23 +22,19 @@ export class UserCreateComponent {
 
   @ViewChild('userForm') userForm?: NgForm;
 
+  @Output() userCreated: EventEmitter<void> = new EventEmitter<void>(); // Define el evento userCreated
+
   constructor(
     private router: Router, 
     private userService: UserService,
-    private dialogRef: MatDialogRef<UserCreateComponent>  // Inyecta MatDialogRef
+    private dialogRef: MatDialogRef<UserCreateComponent>
   ) {}
 
   createUser() {
     if (this.userForm && this.userForm.valid) {
       // El formulario es válido, puedes enviar la solicitud al servidor
-      console.log('Valores de newUser:', this.newUser);
-
-      const httpOptions = {
-        headers: new HttpHeaders({
-          'Content-Type': 'application/json'
-        })
-      };
-
+  
+      // Crea un objeto userData con los datos del formulario
       const userData = {
         message: this.newUser.message,
         user: {
@@ -47,39 +44,30 @@ export class UserCreateComponent {
           password: this.newUser.password
         }
       };
-
+  
       this.userService.createUser(userData).subscribe(
         (data) => {
           console.log('Usuario creado con éxito:', data);
-          this.dialogRef.close('saved');  // Cierra el diálogo después de guardar
+  
+          // Emitir el evento userCreated después de la creación exitosa
+          this.userCreated.emit();
+  
+          this.dialogRef.close('created'); // Cierra el diálogo después de guardar
           this.router.navigate(['/users-list']);
         },
         (error) => {
           console.error('Error al crear el usuario:', error);
           if (error instanceof HttpErrorResponse) {
-            console.error('Estado:', error.status);
-            console.error('Texto del estado:', error.statusText);
-            console.error('Cuerpo de la respuesta:', error.error);
-            console.log('Valores de newUser:', this.newUser);
+            // Manejo de errores
           }
-        }
-      );
+      });
     }
   }
-
-  // Función para mostrar la alerta de confirmación
+  
 
   confirmCancel() {
     // Cierre directo del diálogo sin mostrar una confirmación
     this.dialogRef.close('canceled');
     this.router.navigate(['/users-list']);
   }
-  
-
-  // confirmCancel() {
-  //   if (confirm('¿Estás seguro de que deseas cancelar la creación del usuario?')) {
-  //     this.dialogRef.close('canceled');  // Cierra el diálogo después de cancelar
-  //     this.router.navigate(['/users-list']);
-  //   }
-  // }
 }

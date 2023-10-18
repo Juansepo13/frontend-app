@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../user.service';
-import { PrimeNGConfig } from 'primeng/api';
 import { MatDialog } from '@angular/material/dialog';
 import { UserCreateComponent } from '../user-create/user-create.component';
 import { UserEditComponent } from '../user-edit/user-edit.component';
@@ -17,39 +16,22 @@ export class UserListComponent implements OnInit {
   filteredUsers: any[] = [];
   searchText: string = '';
   toggleSearch: boolean = false;
+  selectedUsers: any[] = [];
+  userId: number | undefined;
 
   constructor(
     private userService: UserService,
     private dialog: MatDialog,
-    PrimeNGConfig: PrimeNGConfig
   ) {}
 
   ngOnInit() {
     this.loadUsers();
   }
 
-  customSort(event: any) {
-    // Verificar por qué columna se está ordenando
-    if (event.field === 'id') {
-      this.filteredUsers.sort((userA, userB) => {
-        // Ordenar en función del valor de la columna 'id'
-        if (event.order === 1) {
-          // Orden ascendente
-          return userA.id - userB.id;
-        } else {
-          // Orden descendente
-          return userB.id - userA.id;
-        }
-      });
-    }
-  }
-  
-
   loadUsers() {
     this.userService.getUsers().subscribe(
       (data) => {
         this.users = data;
-        this.users.sort((a, b) => a.id - b.id);
         this.filteredUsers = data;
       },
       (error) => {
@@ -57,8 +39,6 @@ export class UserListComponent implements OnInit {
       }
     );
   }
-
-
 
   search() {
     this.filteredUsers = this.users.filter((user) => {
@@ -79,12 +59,28 @@ export class UserListComponent implements OnInit {
     const dialogRef = this.dialog.open(UserCreateComponent, {
       width: '600px',
       height: '700px',
-      backdropClass: 'custom-dialog-background', // Clase CSS personalizada para el fondo
+      backdropClass: 'custom-dialog-background',
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      console.log('El diálogo de creación se ha cerrado.');
+      if (result === 'created') {
+        this.loadUsers(); // Recargar la lista después de crear un usuario
+      }
     });
+  }
+
+  onSelectAll(event: any) {
+    this.selectedUsers = event.checked ? [...this.users] : [];
+  }
+
+  onUserSelect(event: any, user: any) {
+    if (event.checked) {
+      this.selectedUsers = [...this.selectedUsers, user];
+    } else {
+      this.selectedUsers = this.selectedUsers.filter(
+        (selectedUser) => selectedUser.id !== user.id
+      );
+    }
   }
 
   openEditUserDialog(userId: number): void {
@@ -92,13 +88,12 @@ export class UserListComponent implements OnInit {
       width: '600px',
       height: '700px',
       backdropClass: 'custom-dialog-background',
-      data: { userId, editMode: true }, // Pasamos el ID del usuario y establecemos el modo de edición
+      data: { userId, editMode: true },
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      if (result === 'saved') {
-        // Realizar acciones después de guardar los cambios (por ejemplo, volver a cargar la lista de usuarios)
-        this.loadUsers(); // Recarga la lista de usuarios después de guardar cambios
+      if (result === 'updated') {
+        this.loadUsers(); // Recargar la lista después de actualizar un usuario
       }
     });
   }
@@ -112,7 +107,7 @@ export class UserListComponent implements OnInit {
           backdropClass: 'custom-dialog-background',
           data: { user: userToDisplay },
         });
-  
+
         dialogRef.afterClosed().subscribe((result) => {
           console.log('El diálogo de detalles se ha cerrado.');
         });
@@ -122,7 +117,6 @@ export class UserListComponent implements OnInit {
       }
     );
   }
-  
 
   openDeleteUserDialog(userId: number): void {
     const dialogRef = this.dialog.open(UserDeleteComponent, {
@@ -131,21 +125,10 @@ export class UserListComponent implements OnInit {
       backdropClass: 'custom-dialog-background',
       data: { userId },
     });
-  
+
     dialogRef.afterClosed().subscribe((result) => {
       if (result === 'deleted') {
-        // Verifica que userId sea un número válido antes de enviar la solicitud de eliminación
-        if (!isNaN(userId) && userId > 0) {
-          this.userService.deleteUser(userId).subscribe(
-            () => {
-              // Realiza acciones después de eliminar el usuario
-              this.loadUsers(); // Recarga la lista de usuarios después de eliminar un usuario
-            },
-            (error) => {
-              console.error('Error al eliminar el usuario:', error);
-            }
-          );
-        }
+        this.loadUsers(); // Recargar la lista después de eliminar un usuario
       }
     });
   }
@@ -156,16 +139,20 @@ export class UserListComponent implements OnInit {
       height: '700px',
       backdropClass: 'custom-dialog-background',
     });
-  
+
     dialogRef.afterClosed().subscribe((result) => {
       if (result === 'deleted') {
-        // Realiza acciones después de eliminar el usuario
-        this.loadUsers(); // Recarga la lista de usuarios después de eliminar un usuario
+        this.loadUsers(); // Recargar la lista después de eliminar un usuario
       }
     });
   }
-  
-  
-  
-  
+
+  deleteSelectedUsers() {
+    const selectedUserIds = this.selectedUsers.map((user) => user.id);
+
+    this.userService.deleteUsers(selectedUserIds).subscribe(() => {
+      this.loadUsers(); // Recargar la lista después de eliminar usuarios
+      this.selectedUsers = [];
+    });
+  }
 }
