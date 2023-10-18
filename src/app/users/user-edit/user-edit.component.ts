@@ -44,9 +44,6 @@ export class UserEditComponent implements OnInit {
 
   saveChanges() {
     if (this.editMode) {
-      // Asegúrate de que el modo de edición esté habilitado antes de guardar los cambios
-      // Aquí debes agregar la lógica para guardar los cambios en el usuario
-      // Por ejemplo:
       this.userService.editUser(this.user.id, this.user).subscribe(
         (data) => {
           console.log('Cambios guardados con éxito:', data);

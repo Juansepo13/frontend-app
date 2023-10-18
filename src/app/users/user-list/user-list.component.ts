@@ -31,6 +31,7 @@ export class UserListComponent implements OnInit {
     this.userService.getUsers().subscribe(
       (data) => {
         this.users = data;
+        this.users.sort((a, b) => a.id - b.id);
         this.filteredUsers = data;
       },
       (error) => {
