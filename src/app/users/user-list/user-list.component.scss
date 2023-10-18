@@ -4,9 +4,11 @@
   flex-direction: column;
   background: #ffffff;
   border-radius: 8px;
-  width: 100%;
+  width: 90%;
   padding: 8px;
   gap: 8px;
+  margin: 0 auto;
+  border: 3px solid var(--darkcolors-light-grey-3, #f8f9fa);   
 }
 
 /* Estilos para los elementos dentro de .table-complete */

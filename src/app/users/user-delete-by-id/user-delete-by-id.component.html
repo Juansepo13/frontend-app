@@ -2,13 +2,14 @@
 
 <div class="div-padre-dialog-user-delete-by-id">
     <div class="card-title">
-      <h2>Confirmación de Eliminación por ID</h2>
+      <h2>Eliminar Usuario</h2>
     </div>
   
     <div class="div-central" style="display: block;">
       <div class="card-content-formulario">
-        <p>Inserte el ID del usuario que desea eliminar:</p>
-        <input type="number" [(ngModel)]="userIdToDelete" />
+        <p>Inserte el ID del usuario a eliminar:</p>        
+        <!-- <input type="number" pInputText [(ngModel)]="userIdToDelete" /> -->
+        <input pInputText class="ng-invalid ng-dirty" [(ngModel)]="userIdToDelete" />
       </div>
     </div>
   
