@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { UserService } from '../../user.service';
 
@@ -8,7 +8,9 @@ import { UserService } from '../../user.service';
   styleUrls: ['./user-details.component.scss']
 })
 export class UserDetailsComponent implements OnInit {
+  @Input() selectedUserDetails: any;
   user: any; // Aquí almacenaremos los detalles del usuario
+  
 
   constructor(private route: ActivatedRoute, private userService: UserService) {}
 
@@ -20,7 +22,7 @@ export class UserDetailsComponent implements OnInit {
   }
 
   loadUserDetails(userId: number) {
-    this.userService.getUserById(userId).subscribe(
+    this.userService.getUserDetailsById(userId).subscribe(
       (data) => {
         this.user = data;
       },

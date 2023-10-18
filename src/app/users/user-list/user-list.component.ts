@@ -5,6 +5,7 @@ import { UserCreateComponent } from '../user-create/user-create.component';
 import { UserEditComponent } from '../user-edit/user-edit.component';
 import { UserDeleteComponent } from '../user-delete/user-delete.component';
 import { UserDeleteByIdComponent } from '../user-delete-by-id/user-delete-by-id.component';
+import { UserDetailsComponent } from '../user-details/user-details.component';
 
 @Component({
   selector: 'app-user-list',
@@ -20,6 +21,7 @@ export class UserListComponent implements OnInit {
   userId: number | undefined;
   isDeleteConfirmation: any;
   selectedUserIds: number[] = [];
+  selectedUserDetails: any;
 
 
   constructor(
@@ -48,6 +50,7 @@ export class UserListComponent implements OnInit {
       return user.user.name.toLowerCase().includes(this.searchText.toLowerCase());
     });
   }
+  
 
   openSearch() {
     this.toggleSearch = true;
@@ -86,13 +89,7 @@ export class UserListComponent implements OnInit {
   }
   
 
-  deleteUserById(userId: number): void {
-    this.userService.deleteUsers([userId]).subscribe(() => {
-      this.loadUsers(); // Recargar la lista después de eliminar el usuario
-    });
-  }
-
-
+  
   onUserSelect(event: any, user: any) {
     if (event.checked) {
       this.selectedUsers = [...this.selectedUsers, user];
@@ -119,24 +116,25 @@ export class UserListComponent implements OnInit {
   }
 
   openDetailsUserDialog(userId: number): void {
-    this.userService.getUserById(userId).subscribe(
+    this.userService.getUserDetailsById(userId).subscribe(
       (userToDisplay) => {
-        const dialogRef = this.dialog.open(UserEditComponent, {
+        const dialogRef = this.dialog.open(UserDetailsComponent, {
           width: '600px',
           height: '700px',
           backdropClass: 'custom-dialog-background',
-          data: { user: userToDisplay },
+          data: { selectedUserDetails: userToDisplay },
         });
-
+  
         dialogRef.afterClosed().subscribe((result) => {
           console.log('El diálogo de detalles se ha cerrado.');
         });
       },
       (error) => {
         console.error('Error al obtener detalles del usuario:', error);
-      }
-    );
+      });
   }
+  
+
 
   openDeleteUserDialog(userId: number): void {
     const dialogRef = this.dialog.open(UserDeleteComponent, {
@@ -152,7 +150,7 @@ export class UserListComponent implements OnInit {
       }
     });
   }
-
+  
   openDeleteUserByIdDialog(): void {
     const dialogRef = this.dialog.open(UserDeleteByIdComponent, {
       width: '600px',
@@ -164,6 +162,12 @@ export class UserListComponent implements OnInit {
       if (result === 'deleted') {
         this.loadUsers(); // Recargar la lista después de eliminar un usuario
       }
+    });
+  }
+
+  deleteUserById(userId: number): void {
+    this.userService.deleteUsers([userId]).subscribe(() => {
+      this.loadUsers(); // Recargar la lista después de eliminar el usuario
     });
   }
 
@@ -192,7 +196,7 @@ export class UserListComponent implements OnInit {
         console.error('Error al eliminar usuarios:', error);
       }
     );
-  }
+  } 
   
   
   

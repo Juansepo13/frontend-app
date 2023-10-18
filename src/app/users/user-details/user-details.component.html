@@ -1,38 +1,39 @@
 <div class="div-padre-dialog-user-details">
-    <div class="titulo-user-details">
-      <h2>Nombre</h2>
-      <h3>Información de usuario</h3>
-    </div>
-  
-    <div class="Informacion-user-details-avatar">
-      <div class="foto-info">
-        <div class="Avatar-foto-details">
-          <!-- Contenido del avatar -->
-        </div>
-        <div class="informacion-usuario">
-          <!-- Contenido de la información del usuario -->
-        </div>
+  <div class="titulo-user-details">
+    <h2>{{ selectedUserDetails.user.name }}</h2>
+    <h3>Información de usuario</h3>
+  </div>
+
+  <div class="Informacion-user-details-avatar">
+    <div class="foto-info">
+      <div class="Avatar-foto-details">
+        <img [src]="selectedUserDetails.user.avatar" alt="Avatar del usuario">
       </div>
-    </div>
-  
-    <div class="Pertenece-a">
-      <p>Lugares</p>
-      <div class="filas-pertenece-user">
-        <!-- Datos de lugares (se agregarán dinámicamente) -->
+      <div class="informacion-usuario">
+        <p>Email: {{ selectedUserDetails.user.email }}</p>
+        <p>Username: {{ selectedUserDetails.user.username }}</p>
       </div>
-    </div>
-  
-    <div class="Informacion-de-ingreso">
-      <p>Información de ingreso</p>
-      <div class="carnet">
-        <!-- Contenido del carnet -->
-      </div>
-      <div class="huella">
-        <!-- Contenido de la huella -->
-      </div>
-      <div class="vehiculo">
-        <!-- Contenido del vehículo -->
-      </div>
+  </div>
+
+  <div class="Pertenece-a">
+    <p>Lugares</p>
+    <div class="filas-pertenece-user">
+      <ul>
+        <li *ngFor="let place of selectedUserDetails.places">{{ place.name }}</li>
+      </ul>
     </div>
   </div>
-  
+
+  <div class="Informacion-de-ingreso">
+    <p>Información de ingreso</p>
+    <div class="carnet">
+      <!-- <p>Carnet: {{ selectedUserDetails.carnet }}</p> -->
+    </div>
+    <div class="huella">
+      <!-- <p>Huella: {{ selectedUserDetails.huella }}</p> -->
+    </div>
+    <div class="vehiculo">
+      <!-- <p>Vehículo: {{ selectedUserDetails.vehiculo }}</p> -->
+    </div>
+  </div>
+</div>
