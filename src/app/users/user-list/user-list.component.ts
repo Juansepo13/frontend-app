@@ -18,6 +18,9 @@ export class UserListComponent implements OnInit {
   toggleSearch: boolean = false;
   selectedUsers: any[] = [];
   userId: number | undefined;
+  isDeleteConfirmation: any;
+  selectedUserIds: number[] = [];
+
 
   constructor(
     private userService: UserService,
@@ -72,6 +75,23 @@ export class UserListComponent implements OnInit {
   onSelectAll(event: any) {
     this.selectedUsers = event.checked ? [...this.users] : [];
   }
+
+  onRowSelect(event: any): void {
+    const selectedUserId = event.data.id;
+    if (this.selectedUserIds.includes(selectedUserId)) {
+      this.selectedUserIds = this.selectedUserIds.filter((id) => id !== selectedUserId);
+    } else {
+      this.selectedUserIds.push(selectedUserId);
+    }
+  }
+  
+
+  deleteUserById(userId: number): void {
+    this.userService.deleteUsers([userId]).subscribe(() => {
+      this.loadUsers(); // Recargar la lista después de eliminar el usuario
+    });
+  }
+
 
   onUserSelect(event: any, user: any) {
     if (event.checked) {
@@ -155,4 +175,25 @@ export class UserListComponent implements OnInit {
       this.selectedUsers = [];
     });
   }
+
+  confirmDeleteSelected(): void {
+    if (this.selectedUserIds.length > 0) {
+      this.deleteUsersByIds(this.selectedUserIds);
+      this.selectedUserIds = [];
+    }
+  }
+  deleteUsersByIds(selectedUserIds: number[]): void {
+    this.userService.deleteUsers(selectedUserIds).subscribe(
+      () => {
+        // La eliminación fue exitosa
+        this.loadUsers(); // Recargar la lista después de eliminar usuarios
+      },
+      (error) => {
+        console.error('Error al eliminar usuarios:', error);
+      }
+    );
+  }
+  
+  
+  
 }

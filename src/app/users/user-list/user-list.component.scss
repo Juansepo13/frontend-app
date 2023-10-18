@@ -104,3 +104,24 @@ at-drawer-content {
 .custom-backdrop {
   background-color: rgba(0, 0, 0, 0.6);
 }
+
+.custom-trash-icon {
+  padding-left: 20px; 
+  font-size: 1.75rem; // Tamaño del ícono
+  color: rgb(34, 74, 207);     // Color del ícono
+  // Otras propiedades de estilo que desees aplicar
+}
+
+// Definición de clase para el ícono de la papelera
+.custom-trash-icon1 {
+  padding-left: 20px; 
+  font-size: 1.75rem; // Tamaño del ícono
+  color: black;     // Color del ícono
+  // Otras propiedades de estilo que desees aplicar
+}
+
+// Definición de clase para el ícono de la papelera cuando se activa la confirmación
+.confirmation {
+  color: red; // Por ejemplo, cambiamos el color a rojo cuando se activa la confirmación
+  // Otras propiedades de estilo que desees aplicar cuando se activa la confirmación
+}
