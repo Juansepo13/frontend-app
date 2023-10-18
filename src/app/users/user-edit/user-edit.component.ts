@@ -8,7 +8,12 @@ import { UserService } from '../../user.service';
   styleUrls: ['./user-edit.component.scss']
 })
 export class UserEditComponent implements OnInit {
-  user: any = {}; // Objeto para almacenar los datos del usuario
+  user: any = {
+    name: '',
+    email: '',
+    username: '',
+    message: '',
+  }; // Objeto para almacenar los datos del usuario
   editMode: boolean = false; // Indicador de modo de edición
 
   constructor(

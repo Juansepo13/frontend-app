@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { UserCreateComponent } from '../user-create/user-create.component';
 import { UserEditComponent } from '../user-edit/user-edit.component';
 import { UserDeleteComponent } from '../user-delete/user-delete.component';
+import { UserDeleteByIdComponent } from '../user-delete-by-id/user-delete-by-id.component';
 
 @Component({
   selector: 'app-user-list',
@@ -27,6 +28,23 @@ export class UserListComponent implements OnInit {
     this.loadUsers();
   }
 
+  customSort(event: any) {
+    // Verificar por qué columna se está ordenando
+    if (event.field === 'id') {
+      this.filteredUsers.sort((userA, userB) => {
+        // Ordenar en función del valor de la columna 'id'
+        if (event.order === 1) {
+          // Orden ascendente
+          return userA.id - userB.id;
+        } else {
+          // Orden descendente
+          return userB.id - userA.id;
+        }
+      });
+    }
+  }
+  
+
   loadUsers() {
     this.userService.getUsers().subscribe(
       (data) => {
@@ -39,6 +57,8 @@ export class UserListComponent implements OnInit {
       }
     );
   }
+
+
 
   search() {
     this.filteredUsers = this.users.filter((user) => {
@@ -104,18 +124,48 @@ export class UserListComponent implements OnInit {
   }
   
 
-  deleteUser(userId: number): void {
-    // Agregar lógica para eliminar el usuario, por ejemplo, mostrar un cuadro de diálogo de confirmación
+  openDeleteUserDialog(userId: number): void {
     const dialogRef = this.dialog.open(UserDeleteComponent, {
       width: '400px',
+      height: '400px',
+      backdropClass: 'custom-dialog-background',
       data: { userId },
     });
-
+  
     dialogRef.afterClosed().subscribe((result) => {
       if (result === 'deleted') {
-        // Realizar acciones después de eliminar el usuario (por ejemplo, volver a cargar la lista de usuarios)
+        // Verifica que userId sea un número válido antes de enviar la solicitud de eliminación
+        if (!isNaN(userId) && userId > 0) {
+          this.userService.deleteUser(userId).subscribe(
+            () => {
+              // Realiza acciones después de eliminar el usuario
+              this.loadUsers(); // Recarga la lista de usuarios después de eliminar un usuario
+            },
+            (error) => {
+              console.error('Error al eliminar el usuario:', error);
+            }
+          );
+        }
+      }
+    });
+  }
+
+  openDeleteUserByIdDialog(): void {
+    const dialogRef = this.dialog.open(UserDeleteByIdComponent, {
+      width: '600px',
+      height: '700px',
+      backdropClass: 'custom-dialog-background',
+    });
+  
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result === 'deleted') {
+        // Realiza acciones después de eliminar el usuario
         this.loadUsers(); // Recarga la lista de usuarios después de eliminar un usuario
       }
     });
   }
+  
+  
+  
+  
 }

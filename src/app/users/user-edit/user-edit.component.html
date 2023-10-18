@@ -5,30 +5,33 @@
 
   <div class="div-central">
     <div class="card-content-formulario">
-      <h2>Editar Usuario</h2>
+      <h2></h2>
+
+      <div class="col-12 md:col-4">
+        <p-avatar label="P" styleClass="mr-2" size="xlarge" shape="circle"></p-avatar>
+        <h5>{{ user?.name }}</h5>
+      </div>
+
       <form #userForm="ngForm">
-        <div class="form-group">
+        <!-- <div class="form-group">
           <label for="name">Nombre:</label>
-          <input type="text" [(ngModel)]="user.name" name="name" [disabled]="!editMode">
+          <input type="text" [(ngModel)]="user.name" name="name" required [disabled]="!editMode">
         </div>
         <div class="form-group">
           <label for="email">Correo Electrónico:</label>
-          <input type="text" [(ngModel)]="user.email" name="email" [disabled]="!editMode">
+          <input type="text" [(ngModel)]="user.email" name="email" required [disabled]="!editMode">
         </div>
         <div class="form-group">
           <label for="username">Nombre de Usuario:</label>
-          <input type="text" [(ngModel)]="user.username" name="username" [disabled]="!editMode">
-        </div>
+          <input type="text" [(ngModel)]="user.username" name="username" required [disabled]="!editMode">
+        </div> -->
         <div class="form-group">
           <label for="message">Mensaje:</label>
           <input type="text" [(ngModel)]="user.message" name="message" required [disabled]="!editMode">
         </div>
       </form>
 
-      <div class="col-12 md:col-4">
-        <p-avatar label="P" styleClass="mr-2" size="xlarge" shape="circle"></p-avatar>
-        <h5>{{ user?.name }}</h5>
-      </div>
+      
     </div>
   </div>
 

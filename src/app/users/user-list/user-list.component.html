@@ -2,7 +2,8 @@
 <div class="table-complete">
   <div class="table-header">
     <p-button label="+ Nuevo" (click)="openCreateUserDialog()"></p-button>
-    <i class="pi pi-trash custom-trash-icon"></i>
+    <i class="pi pi-trash custom-trash-icon" (click)="openDeleteUserByIdDialog()"></i>
+
     
     <div class="search-bar">
       <div class="p-inputgroup">
@@ -27,18 +28,18 @@
         <p-table [value]="users" dataKey="id" editMode="row" [tableStyle]="{}">
           <ng-template pTemplate="header">
             <tr>
-              <th style="width: 8%">ID</th>
-              <th style="width: 12%">Name</th>
-              <th style="width: 20%">Email</th>
-              <th style="width: 10%">Username</th>
-              <th style="width: 40%">Message</th>
+              <th pSortableColumn="id" style="width: 8%">ID <p-sortIcon field="id"></p-sortIcon></th>
+              <th pSortableColumn="user.name" style="width: 10%">Name <p-sortIcon field="user.name"></p-sortIcon></th>
+              <th pSortableColumn="user.email" style="width: 18%">Email <p-sortIcon field="user.email"></p-sortIcon></th>
+              <th pSortableColumn="user.username" style="width: 10%">Username <p-sortIcon field="user.username"></p-sortIcon></th>
+              <th pSortableColumn="message" style="width: 39%">Message <p-sortIcon field="message"></p-sortIcon></th>
+              <th style="width: 5%"></th> 
               <th style="width: 5%"></th> 
               <th style="width: 5%"></th> 
             </tr>
           </ng-template>
           
-
-          <!-- Cuerpo de la tabla -->
+          <!-- Cuerpo de la tabla (sin cambios) -->
           <ng-template pTemplate="body" let-user let-editing="editing" let-ri="rowIndex">
             <tr [pEditableRow]="user">
               <td>{{ user.id }}</td>
@@ -50,7 +51,10 @@
                 <i class="pi pi-pencil" style="font-size: 1.25rem; color:blue;" (click)="openEditUserDialog(user.id)"></i>
               </td>
               <td>
-                <i class="pi pi-search" style="font-size: 1.5rem; color: blue;" (click)="openDetailsUserDialog(user.id)" ></i>
+                <i class="pi pi-search" style="font-size: 1.5rem; color: blue;" (click)="openDetailsUserDialog(user.id)"></i>
+              </td>
+              <td>
+                <i class="pi pi-trash custom-trash-icon" style="font-size: 1.5rem; color: blue;" (click)="openDeleteUserDialog(user.id)"></i>
               </td>
             </tr>
           </ng-template>

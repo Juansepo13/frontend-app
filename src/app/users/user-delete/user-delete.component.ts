@@ -1,43 +1,47 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, Inject } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { UserService } from '../../user.service';
+import { RouterModule } from '@angular/router';
+
 
 @Component({
   selector: 'app-user-delete',
   templateUrl: './user-delete.component.html',
-  styleUrls: ['./user-delete.component.scss']
+  styleUrls: ['./user-delete.component.scss'],
 })
-export class UserDeleteComponent implements OnInit {
-  user: any; // Aquí almacenaremos los detalles del usuario
+export class UserDeleteComponent {
+  user: any;
+  router: any;
 
-  constructor(private route: ActivatedRoute, private userService: UserService) {}
-
-  ngOnInit() {
-    this.route.params.subscribe((params) => {
-      const userId = params['id'];
-      this.loadUserDetails(userId); // Llama a la función para cargar los detalles del usuario al iniciar el componente
-    });
+  constructor(
+    private dialogRef: MatDialogRef<UserDeleteComponent>,
+    @Inject(MAT_DIALOG_DATA) private data: any,
+    private userService: UserService,
+  ) {
+    this.user = data.user; // Usar la propiedad 'user' en lugar de 'Id'
   }
 
-  loadUserDetails(userId: number) {
-    this.userService.getUserById(userId).subscribe(
-      (data) => {
-        this.user = data;
-      },
-      (error) => {
-        console.error('Error al cargar los detalles del usuario:', error);
-      }
-    );
+  confirmDelete() {
+    if (this.data.userId) { // Cambiar 'Id' a 'userId'
+      // Llama al servicio para eliminar el usuario
+      this.userService.deleteUser(this.data.userId).subscribe(
+        () => {
+          // Eliminación exitosa, cierra el cuadro de diálogo y envía 'deleted' como resultado
+          this.dialogRef.close('deleted');
+        },
+        (error) => {
+          console.error('Error al eliminar el usuario:', error);
+          // Puedes manejar errores aquí si es necesario
+        }
+      );
+    }
   }
 
-  deleteUser() {
-    this.userService.deleteUser(this.user.id).subscribe(
-      () => {
-        console.log('Usuario eliminado con éxito.');
-      },
-      (error) => {
-        console.error('Error al eliminar el usuario:', error);
-      }
-    );
+  
+  confirmCancel() {
+    // Cierre directo del diálogo sin mostrar una confirmación
+    this.dialogRef.close('canceled');
+    this.router.navigate(['/users-list']);
   }
+
 }

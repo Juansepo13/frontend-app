@@ -1,0 +1,69 @@
+.div-padre-dialog-user-delete {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    text-align: center;
+  
+    .div-central {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: flex-start;
+      width: 100%;
+      margin-top: 20px;
+      flex: 8;
+  
+      .card-content-formulario {
+        flex: 7;
+        margin-right: 20px;
+  
+        p {
+          font-size: 18px; // Cambia el tamaño de fuente según tus preferencias
+          margin-bottom: 20px;
+        }
+      }
+    }
+  
+    .div-inferior-botones {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: flex-end;
+      width: 100%;
+      flex: 2;
+    
+      .p-buttonset {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+  
+        .btn {
+          font-size: 16px;
+          padding: 10px 20px;
+          margin: 10px;
+        }
+  
+        .btn-danger {
+          background-color: #dc3545;
+          color: #fff;
+        }
+  
+        .btn-secondary {
+          background-color: #6c757d;
+          color: #fff;
+        }
+      }
+    }
+  
+    p {
+      font-size: 18px;
+    }
+  
+    h2 {
+      font-size: 24px; // Puedes ajustar el tamaño de fuente para el título
+    }
+  }
+  

@@ -12,7 +12,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TableModule } from 'primeng/table';
 import { ToastModule } from 'primeng/toast';
 import { DropdownModule } from 'primeng/dropdown';
-import { UserService } from './user.service'; // Importa el servicio UserService
+import { UserService } from './user.service'; 
 import { UserListComponent } from './users/user-list/user-list.component';
 import { UserDetailsComponent } from './users/user-details/user-details.component';
 import { UserEditComponent } from './users/user-edit/user-edit.component';
@@ -26,6 +26,10 @@ import { InputTextModule } from 'primeng/inputtext';
 import { AvatarModule } from 'primeng/avatar';
 import { AvatarGroupModule } from 'primeng/avatargroup';
 import { CascadeSelectModule } from 'primeng/cascadeselect';
+import { ReactiveFormsModule } from '@angular/forms';
+import { UserDeleteByIdComponent } from './users/user-delete-by-id/user-delete-by-id.component';
+
+
 
 
 
@@ -36,7 +40,7 @@ import { CascadeSelectModule } from 'primeng/cascadeselect';
     UserDetailsComponent, 
     UserEditComponent, 
     UserDeleteComponent, 
-    UserCreateComponent
+    UserCreateComponent, UserDeleteByIdComponent
   ],
   imports: [
     BrowserModule,
@@ -57,6 +61,8 @@ import { CascadeSelectModule } from 'primeng/cascadeselect';
     AvatarModule,
     AvatarGroupModule,
     CascadeSelectModule,
+    ReactiveFormsModule,
+    RouterModule,
   ],
   providers: [PrimeNGConfig, UserService], // Agrega UserService y TuitService como proveedores
   bootstrap: [AppComponent],

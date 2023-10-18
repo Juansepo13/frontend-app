@@ -1,1 +1,18 @@
-<p>user-delete works!</p>
+<div class="div-padre-dialog-user-delete">
+  <div class="card-title">
+    <h2>Confirmación de Eliminación</h2>
+  </div>
+
+  <div class="div-central" style="display: block;">
+    <div class="card-content-formulario">
+      <p>¿Está seguro de que desea eliminar al usuario ID {{ user.name }} - {{ user.id }}?</p>
+    </div>
+  </div>
+
+  <div class="div-inferior-botones">
+    <div class="p-buttonset">
+      <button class="btn btn-danger mr-2" (click)="confirmDelete()">Eliminar</button>
+      <button class="btn btn-secondary" (click)="confirmCancel()">Cancelar</button>
+    </div>
+  </div>
+</div>

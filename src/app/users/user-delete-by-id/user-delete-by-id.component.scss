@@ -1,0 +1,61 @@
+/* user-delete-by-id.component.scss */
+
+.div-padre-dialog-user-delete-by-id {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    text-align: center;
+  
+    .div-central {
+      display: block;
+      width: 100%;
+      margin-top: 20px;
+    }
+  
+    .card-content-formulario {
+      form {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: stretch;
+        padding: 20px;
+        width: 100%;
+  
+        .form-group {
+          margin-bottom: 20px;
+        }
+  
+        input[type="number"] {
+          width: 100%;
+          padding: 10px;
+        }
+      }
+    }
+  
+    .div-inferior-botones {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: flex-end;
+      width: 100%;
+  
+      button {
+        font-size: 16px;
+        padding: 10px 20px;
+        margin: 10px;
+        text-align: right;
+      }
+    }
+  
+    p {
+      font-size: 18px;
+    }
+  
+    h2 {
+      font-size: 24px;
+    }
+  }
+  

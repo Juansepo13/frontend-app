@@ -5,6 +5,7 @@ import { UserDetailsComponent } from './users/user-details/user-details.componen
 import { UserEditComponent } from './users/user-edit/user-edit.component';
 import { UserDeleteComponent } from './users/user-delete/user-delete.component';
 import { UserCreateComponent } from './users/user-create/user-create.component';
+import { UserDeleteByIdComponent } from './users/user-delete-by-id/user-delete-by-id.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/', pathMatch: 'full' },
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'user-create', component: UserCreateComponent },
   { path: 'user-edit/:id', component: UserEditComponent },
   { path: 'user-delete/delete/:id', component: UserDeleteComponent },
+  { path: 'user-delete-by-id/:id', component: UserDeleteByIdComponent}
 ];
 
 
