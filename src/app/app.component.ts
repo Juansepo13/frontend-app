@@ -13,6 +13,9 @@ export class AppComponent implements OnInit {
   searchText= "";
   users: any[] = [];
   plusIcon = PrimeIcons.PLUS;
+  imagen: any = '/home/juansepo13/Alltic/frontend-app/src/alltic-logo.png';
+entrante: any;
+  
 
   constructor(
     private userService: UserService, 
@@ -35,6 +38,5 @@ export class AppComponent implements OnInit {
   // Función para navegar a la lista de usuarios
   navigateToUsersList() {
     this.router.navigate(['/users-list']);
-    console.log('Navegando a la lista de usuarios');
   }
 }

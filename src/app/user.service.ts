@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, forkJoin, Subject } from 'rxjs';
+import { User } from './user.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -19,13 +20,11 @@ export class UserService {
     return this.http.get<any[]>(this.apiUrl);
   }
 
-  getUserById(id: number): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/${id}`);
+  
+  getUserId(id: number): Observable<User> {
+    return this.http.get<User>(`${this.apiUrl}/${id}`);
   }
 
-  getUserDetailsById(userId: number) {
-    return this.http.get<any>(`${this.apiUrl}/get/${userId}`);
-  }
 
   createUser(user: any): Observable<any> {
     return this.http.post<any>(this.apiUrl, user);
@@ -35,12 +34,12 @@ export class UserService {
     return this.http.patch(`${this.apiUrl}/${id}`, updatedUserData, this.httpOptions);
   }
 
-  deleteUser(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/${id}`);
-  }
-
   updateUser(Id: number, user: { message: string }): Observable<any> {
     return this.http.patch(`${this.apiUrl}/${Id}`, user, this.httpOptions);
+  }
+
+  deleteUser(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
 
   deleteUsers(userIds: number[]): Observable<void[]> { // Cambio en el tipo de retorno

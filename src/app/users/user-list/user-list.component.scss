@@ -106,10 +106,18 @@ at-drawer-content {
 }
 
 .custom-trash-icon {
-  padding-left: 20px; 
+  padding-left: 10px; 
   font-size: 1.75rem; // Tamaño del ícono
   color: rgb(34, 74, 207);     // Color del ícono
   // Otras propiedades de estilo que desees aplicar
+}
+
+.custom-trash-icon2 {
+  padding-left: -10px;
+}
+.pi-eye {
+  padding-right: 10px;
+  padding-left: 10px;
 }
 
 // Definición de clase para el ícono de la papelera

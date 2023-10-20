@@ -33,9 +33,10 @@ export class UserEditComponent implements OnInit {
   }
 
   loadUserData(userId: number) {
-    this.userService.getUserById(userId).subscribe(
+    this.userService.getUserId(userId).subscribe(
       (data) => {
         this.user = data; // Asigna los datos del usuario al objeto user
+        this.user.id = userId
       },
       (error) => {
         console.error('Error al cargar los datos del usuario:', error);
@@ -52,11 +53,11 @@ export class UserEditComponent implements OnInit {
       this.userService.editUser(this.user.id, this.user).subscribe(
         (data) => {
           console.log('Cambios guardados con éxito:', data);
-          this.dialogRef.close('saved'); // Cierra el diálogo después de guardar
+          this.dialogRef.close('saved');
         },
         (error) => {
           console.error('Error al guardar los cambios:', error);
-          // Puedes manejar errores aquí
+          
         }
       );
     }

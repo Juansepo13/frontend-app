@@ -14,6 +14,7 @@ import { UserDetailsComponent } from '../user-details/user-details.component';
 })
 export class UserListComponent implements OnInit {
   users: any[] = [];
+  user: number[] |undefined;
   filteredUsers: any[] = [];
   searchText: string = '';
   toggleSearch: boolean = false;
@@ -22,7 +23,7 @@ export class UserListComponent implements OnInit {
   isDeleteConfirmation: any;
   selectedUserIds: number[] = [];
   selectedUserDetails: any;
-
+  
 
   constructor(
     private userService: UserService,
@@ -44,6 +45,17 @@ export class UserListComponent implements OnInit {
       }
     );
   }
+  loadUser(userId: number) {
+    this.userService.getUserId(userId).subscribe(
+      (data) => {
+        this.selectedUserDetails = data; // Actualiza la propiedad selectedUserDetails
+      },
+      (error) => {
+        console.error('Error al cargar el usuario por ID:', error);
+      }
+    );
+  }
+  
 
   search() {
     this.filteredUsers = this.users.filter((user) => {
@@ -87,9 +99,7 @@ export class UserListComponent implements OnInit {
       this.selectedUserIds.push(selectedUserId);
     }
   }
-  
-
-  
+    
   onUserSelect(event: any, user: any) {
     if (event.checked) {
       this.selectedUsers = [...this.selectedUsers, user];
@@ -112,29 +122,23 @@ export class UserListComponent implements OnInit {
       if (result === 'updated') {
         this.loadUsers(); // Recargar la lista después de actualizar un usuario
       }
-    });
+    }
+    
+    );
   }
 
-  openDetailsUserDialog(userId: number): void {
-    this.userService.getUserDetailsById(userId).subscribe(
-      (userToDisplay) => {
-        const dialogRef = this.dialog.open(UserDetailsComponent, {
-          width: '600px',
-          height: '700px',
-          backdropClass: 'custom-dialog-background',
-          data: { selectedUserDetails: userToDisplay },
-        });
-  
-        dialogRef.afterClosed().subscribe((result) => {
-          console.log('El diálogo de detalles se ha cerrado.');
-        });
-      },
-      (error) => {
-        console.error('Error al obtener detalles del usuario:', error);
-      });
-  }
-  
+   openDetailsUserDialog(userId: number): void {
+    const dialogRef = this.dialog.open(UserDetailsComponent, {
+    width: '600px',
+    height: '700px',
+    backdropClass: 'custom-dialog-background',
+    data: { selectedUserId: userId },
+  });
 
+  dialogRef.afterClosed().subscribe((result) => {
+    console.log('El diálogo de detalles se ha cerrado.');
+  });
+}
 
   openDeleteUserDialog(userId: number): void {
     const dialogRef = this.dialog.open(UserDeleteComponent, {

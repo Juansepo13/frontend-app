@@ -2,7 +2,7 @@
 <div class="table-complete">
   <div class="table-header">
     <p-button label="+ Nuevo" (click)="openCreateUserDialog()"></p-button>
-    <i class="pi pi-trash custom-trash-icon" (click)="openDeleteUserByIdDialog()"></i>
+    <!-- <i class="pi pi-trash custom-trash-icon" (click)="openDeleteUserByIdDialog()"></i> -->
     <i class="pi pi-trash custom-trash-icon1" (click)="confirmDeleteSelected()" [ngClass]="{'confirmation': isDeleteConfirmation, 'black-icon': isDeleteConfirmation}"></i>
 
 
@@ -55,7 +55,7 @@
                 <i class="pi pi-eye" style="font-size: 1.5rem; color: blue;" (click)="openDetailsUserDialog(user.id)"></i>
               </td>
               <td>
-                <i class="pi pi-trash custom-trash-icon" style="font-size: 1.5rem; color: blue;" (click)="openDeleteUserDialog(user.id)"></i>
+                <i class="pi pi-trash custom-trash-icon2" style="font-size: 1.5rem; color: blue;" (click)="openDeleteUserDialog(user.id)"></i>
               </td>
             </tr>
           </ng-template>

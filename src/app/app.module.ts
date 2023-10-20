@@ -28,10 +28,7 @@ import { AvatarGroupModule } from 'primeng/avatargroup';
 import { CascadeSelectModule } from 'primeng/cascadeselect';
 import { ReactiveFormsModule } from '@angular/forms';
 import { UserDeleteByIdComponent } from './users/user-delete-by-id/user-delete-by-id.component';
-
-
-
-
+import { ImageBrokeDirective } from './image-broke.directive';
 
 @NgModule({
   declarations: [
@@ -40,7 +37,9 @@ import { UserDeleteByIdComponent } from './users/user-delete-by-id/user-delete-b
     UserDetailsComponent, 
     UserEditComponent, 
     UserDeleteComponent, 
-    UserCreateComponent, UserDeleteByIdComponent
+    UserCreateComponent, 
+    UserDeleteByIdComponent, 
+    ImageBrokeDirective,
   ],
   imports: [
     BrowserModule,

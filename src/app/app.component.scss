@@ -2,7 +2,7 @@
 header {
   background-color: rgb(218, 227, 245);
   color: white; /* Corrección: Color en lugar de color: hsl(147, 138%, 218%); */
-  height: 80px;
+  height: 100px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -11,6 +11,11 @@ header {
   left: 0;
   right: 0;
   z-index: 1; /* Asegura que el header esté por encima de otros elementos */
+}
+.header-logo {
+  width: 250px;
+  height: auto;
+  margin: 20px;
 }
 
 /* Estilos para el barra lateral (mat-drawer) */
@@ -53,6 +58,7 @@ footer {
   z-index: 1;
 }
 
+
 /* Estilos para el rectangle-1011 */
 .rectangle-1011, .rectangle-1011 * {
   box-sizing: border-box;
@@ -74,13 +80,12 @@ footer {
 }
 
 /* Estilos para el ellipse-8 (image-footer) */
-.image-footer {
-  background: linear-gradient(to left, rgba(255, 255, 255, 0.20), rgba(255, 255, 255, 0.20));
-  border-radius: 50%;
-  width: 48px;
-  height: 48px;
-  margin: 0 20px; /* Agrega margen a la imagen en la derecha */
+.footer-logo {
+  width: 100px;
+  height: auto;
+  margin-right: 30px;
 }
+
 
 /* Estilos para el contenido dentro de footer */
 .footer-content {
