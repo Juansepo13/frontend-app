@@ -120,7 +120,7 @@ export class UserListComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result === 'updated') {
-        this.loadUsers(); // Recargar la lista después de actualizar un usuario
+        this.loadUsers();
       }
     }
     

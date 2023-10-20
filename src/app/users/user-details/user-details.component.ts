@@ -1,54 +1,42 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { UserService } from '../../user.service';
-import { MatDialogRef } from '@angular/material/dialog';
-import { User } from '../../user.interface'; // Importa la interfaz User
+import { Component, OnInit, Inject } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { UserService } from '../../user.service'; // Importa el servicio de usuarios
 
 @Component({
   selector: 'app-user-details',
   templateUrl: './user-details.component.html',
-  styleUrls: ['./user-details.component.scss']
+  styleUrls: ['./user-details.component.scss'],
 })
 export class UserDetailsComponent implements OnInit {
-  @Input() selectedUserDetails: User = {} as User;
-  userId!: number;
-  dialogRef: MatDialogRef<UserDetailsComponent>;
-  router: Router;
+  selectedUserDetails: any;
 
   constructor(
-    private userService: UserService,
-    private route: ActivatedRoute,
-    dialogRef: MatDialogRef<UserDetailsComponent>,
-    router: Router
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    public dialogRef: MatDialogRef<UserDetailsComponent>,
+    private userService: UserService // Inyecta el servicio de usuarios
   ) {
-    this.dialogRef = dialogRef;
-    this.router = router;
-
-    this.route.params.subscribe(params => {
-      this.userId = params['id'];
-    });
-  }
-
-  ngOnInit() {
-    if (this.userId !== undefined) {
-      this.loadUserDetails(this.userId);
+    // Verifica si se ha proporcionado un userId y luego carga los detalles del usuario
+    if (data.selectedUserId) {
+      this.loadUser(data.selectedUserId);
     }
   }
 
-  loadUserDetails(userId: number) {
+  ngOnInit() {
+    // Realiza cualquier inicialización necesaria aquí
+  }
+
+  loadUser(userId: number) {
     this.userService.getUserId(userId).subscribe(
-      (data: User) => {
+      (data) => {
         this.selectedUserDetails = data;
-        console.log('Datos del usuario:', data); // Agrega esta línea para mostrar los datos en la consola
       },
       (error) => {
-        console.error('Error al cargar los detalles del usuario:', error);
+        console.error('Error al cargar el usuario por ID:', error);
       }
     );
   }
-  
+
   confirmCancel() {
-    this.dialogRef.close('canceled');
-    this.router.navigate(['/users-list']);
+    this.dialogRef.close();
   }
 }
