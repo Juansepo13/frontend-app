@@ -1,1 +1,66 @@
-@import "primeicons/primeicons.css";
+// 
+.div-padre-dialog-user-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+
+}
+
+// div de informacion
+.div-info {
+    display: flex;
+    justify-content: space-between;
+  
+    .div-info-user-avatar {
+      width: 40%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  
+    .div-info-user {
+      width: 60%;
+      display: flex;
+      flex-direction: column;
+    }
+}
+
+
+//div central lugares
+.div-centro-lugares{
+    margin-left: 20px;
+}
+
+
+// div box inferior
+.div-inferior-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+  }
+  
+  .div-inferior-box-izquierda i,
+  .div-inferior-box-centro span,
+  .div-inferior-box-derecha i {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+    margin: 5px;
+    padding: 20px;
+
+  }
+  
+
+//botones 
+.div-inferior-botones {
+    text-align: right;
+    padding: 10px;
+
+span.p-buttonset {
+    display: inline;
+}
+}
