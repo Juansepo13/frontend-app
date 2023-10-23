@@ -29,6 +29,7 @@ import { CascadeSelectModule } from 'primeng/cascadeselect';
 import { ReactiveFormsModule } from '@angular/forms';
 import { UserDeleteByIdComponent } from './users/user-delete-by-id/user-delete-by-id.component';
 import { ImageBrokeDirective } from './image-broke.directive';
+import { MatChipsModule } from '@angular/material/chips';
 
 @NgModule({
   declarations: [
@@ -62,6 +63,7 @@ import { ImageBrokeDirective } from './image-broke.directive';
     CascadeSelectModule,
     ReactiveFormsModule,
     RouterModule,
+    MatChipsModule,
   ],
   providers: [PrimeNGConfig, UserService], // Agrega UserService y TuitService como proveedores
   bootstrap: [AppComponent],

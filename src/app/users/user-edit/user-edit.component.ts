@@ -1,65 +1,87 @@
-import { Component, Inject, OnInit } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { UserService } from '../../user.service';
+import { Component, OnInit, Inject } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { UserService } from '../../user.service'; // Importa el servicio de usuarios
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-user-edit',
   templateUrl: './user-edit.component.html',
-  styleUrls: ['./user-edit.component.scss']
+  styleUrls: ['./user-edit.component.scss'],
 })
 export class UserEditComponent implements OnInit {
-  user: any = {
-    name: '',
-    email: '',
-    username: '',
-    message: '',
-  }; // Objeto para almacenar los datos del usuario
-  editMode: boolean = false; // Indicador de modo de edición
+  userForm: FormGroup;
+  editMode: boolean = false;
+  originalUserData: any; // Guardar los datos originales del usuario
 
   constructor(
-    private dialogRef: MatDialogRef<UserEditComponent>,
-    @Inject(MAT_DIALOG_DATA) private data: any,
-    private userService: UserService
+    private fb: FormBuilder,
+    private userService: UserService,
+    public dialogRef: MatDialogRef<UserEditComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any
   ) {
-    this.editMode = data.editMode || false;
+    this.userForm = this.fb.group({
+      name: [this.originalUserData?.name ?? '', Validators.required],
+      email: [this.originalUserData?.email ?? '', [Validators.required, Validators.email]],
+      username: [this.originalUserData?.username ?? '', Validators.required],
+      message: [this.originalUserData?.message ?? ''],
+      // Otros campos del formulario
+    });
   }
 
-  ngOnInit(): void {
-    const userId = this.data.userId;
-
-    if (userId) {
-      this.loadUserData(userId);
+  ngOnInit() {
+    if (this.data.userId) {
+      this.loadUser(this.data.userId);
     }
   }
 
-  loadUserData(userId: number) {
+  loadUser(userId: number) {
     this.userService.getUserId(userId).subscribe(
       (data) => {
-        this.user = data; // Asigna los datos del usuario al objeto user
-        this.user.id = userId
+        this.originalUserData = data; // Guarda los datos originales
+        this.userForm.patchValue(data); // Carga los datos en el formulario
+        this.editMode = true; // Habilita el modo edición
       },
       (error) => {
-        console.error('Error al cargar los datos del usuario:', error);
+        console.error('Error al cargar el usuario por ID:', error);
       }
     );
   }
 
-  closeDetailsUserDialog() {
-    this.dialogRef.close();
-  }
-
-  saveChanges() {
-    if (this.editMode) {
-      this.userService.editUser(this.user.id, this.user).subscribe(
-        (data) => {
-          console.log('Cambios guardados con éxito:', data);
-          this.dialogRef.close('saved');
+  onSave() {
+  if (this.userForm.valid) {
+    const userId = this.data.userId;
+    const updatedUserData = this.userForm.value;
+    
+    // Comprueba si se realizaron cambios en los campos del formulario
+    if (!this.isDataChanged(updatedUserData, this.originalUserData)) {
+      // No hay cambios, no se envía la solicitud
+      this.dialogRef.close('no-changes');
+    } else {
+      this.userService.editUser(userId, updatedUserData).subscribe(
+        () => {
+          this.dialogRef.close('updated');
         },
         (error) => {
-          console.error('Error al guardar los cambios:', error);
-          
+          console.error('Error al actualizar el usuario:', error);
+          // Manejo de errores
         }
       );
     }
+  }
+}
+ 
+  // Método para verificar si se realizaron cambios en los datos
+  isDataChanged(updatedData: any, originalData: any): boolean {
+    return (
+      updatedData.name !== originalData.name ||
+      updatedData.email !== originalData.email ||
+      updatedData.username !== originalData.username ||
+      updatedData.message !== originalData.message
+    );
+  }
+  
+
+  onCancel() {
+    this.dialogRef.close();
   }
 }

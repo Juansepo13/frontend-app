@@ -129,7 +129,7 @@ export class UserListComponent implements OnInit {
 
    openDetailsUserDialog(userId: number): void {
     const dialogRef = this.dialog.open(UserDetailsComponent, {
-    width: '600px',
+    width: '850px',
     height: '700px',
     backdropClass: 'custom-dialog-background',
     data: { selectedUserId: userId },
@@ -158,7 +158,7 @@ export class UserListComponent implements OnInit {
   openDeleteUserByIdDialog(): void {
     const dialogRef = this.dialog.open(UserDeleteByIdComponent, {
       width: '600px',
-      height: '700px',
+      height: '650px',
       backdropClass: 'custom-dialog-background',
     });
 

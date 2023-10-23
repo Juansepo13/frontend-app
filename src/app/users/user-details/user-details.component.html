@@ -12,43 +12,84 @@
 
     <div class="div-info-user">
 
-      <ng-container *ngIf="selectedUserDetails">
-        <p><strong>Nombre:</strong> {{ selectedUserDetails.user.name }}</p>
-        <p><strong>Email:</strong> {{ selectedUserDetails.user.email }}</p>
-        <p><strong>Mensaje:</strong> {{ selectedUserDetails.message }}</p>
+  
+      <div class="info-user-left">
+        <ng-container *ngIf="selectedUserDetails">
+          <div class="div-info-user-content">
+            <p><strong></strong> {{ selectedUserDetails.user.name }}</p>
+            <p><strong></strong> {{ selectedUserDetails.user.email }}</p>
+          </div>
+        </ng-container>
+      </div>
 
-      </ng-container>
-    </div>
+        <div class="info-user-right">
+          <ng-container *ngIf="selectedUserDetails">
+            <div class="div-info-user-content">
+              <p><strong></strong> {{ selectedUserDetails.user.username }}</p>
+              <p><strong></strong> {{ selectedUserDetails.message }}</p>
+            </div>
+          </ng-container>
+        </div>
+      </div>
 
   </div>
 
   <div class="div-centro-lugares">
     <h3>Lugares</h3>
-
+    
+    <div class="inferior-lugares">
+      
+      <!-- <mat-chip-set role="list">
+        
+        <mat-chip role="listitem"> Visitante </mat-chip>
+      </mat-chip-set> -->
+      
+      <mat-chip-listbox aria-label="Fish selection">
+        <p>Casa11</p>
+        <mat-chip-option color="accent" selected>Visitante</mat-chip-option>
+      </mat-chip-listbox>
+      
+    </div>
   </div>
 
   <div class="div-inferior-grande">
 
     <div class="div-inferior-header">
+      <h3>Informacion de Ingreso</h3>
 
     </div>
 
     <div class="div-inferior-box">
 
       <div class="div-inferior-box-izquierda">
-        <!-- carnet  -->
-        <i class="pi pi-id-card"></i>
+      
+        <div class="box-icono">
+          <i class="pi pi-id-card"></i>
+        </div>
+        <div class="box-texto">
+          <p>Carnet de Identificacion</p>
+        </div>
       </div>
 
       <div class="div-inferior-box-centro">
-        <!-- huella -->
-        <span class="material-icons" style="border-style: solid; border-radius: 30%; padding: 1px; border-width: 2px">fingerprint</span>
+        <div class="box-icono">
+          <span class="material-icons" style="border-style: solid; border-radius: 30%; padding: 1px; border-width: 2px">fingerprint</span>
+        </div>
+        <div class="box-texto">
+          <p>Huella dactilar</p>
+        </div>
       </div>
 
       <div class="div-inferior-box-derecha">
         <!-- vehiculo -->
-        <i class="pi pi-car"></i>
+        <div class="box-icono">
+          <i class="pi pi-car"></i>
+        </div>  
+        <div class="box-texto">
+          <p>Vehiculo</p>
+        </div>
       </div>
+      
     </div>
 
   </div>
