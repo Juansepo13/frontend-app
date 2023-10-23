@@ -157,7 +157,7 @@ export class UserListComponent implements OnInit {
   
   openDeleteUserByIdDialog(): void {
     const dialogRef = this.dialog.open(UserDeleteByIdComponent, {
-      width: '600px',
+      width: '550px',
       height: '650px',
       backdropClass: 'custom-dialog-background',
     });

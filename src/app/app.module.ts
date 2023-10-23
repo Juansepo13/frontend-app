@@ -30,6 +30,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { UserDeleteByIdComponent } from './users/user-delete-by-id/user-delete-by-id.component';
 import { ImageBrokeDirective } from './image-broke.directive';
 import { MatChipsModule } from '@angular/material/chips';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -64,6 +65,7 @@ import { MatChipsModule } from '@angular/material/chips';
     ReactiveFormsModule,
     RouterModule,
     MatChipsModule,
+    MatSelectModule 
   ],
   providers: [PrimeNGConfig, UserService], // Agrega UserService y TuitService como proveedores
   bootstrap: [AppComponent],
