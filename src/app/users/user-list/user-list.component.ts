@@ -75,7 +75,7 @@ export class UserListComponent implements OnInit {
 
   openCreateUserDialog(): void {
     const dialogRef = this.dialog.open(UserCreateComponent, {
-      width: '600px',
+      width: '700px',
       height: '700px',
       backdropClass: 'custom-dialog-background',
     });

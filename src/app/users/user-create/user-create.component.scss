@@ -1,74 +1,78 @@
-.div-padre-dialog-user-edit {
+.padre-dialog-create-user {
   display: flex;
   flex-direction: column;
   height: 100%;
   justify-content: space-between;
-  align-items: center;
-  padding: 20px;
-  text-align: center;
+}
 
-  .div-central {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: flex-start;
-    width: 100%;
-    margin-top: 20px;
-    flex: 8; /* Cambia esto a 8 para que ocupe el 80% del espacio en altura */
+.dialog-create-user-header,
+.dialog-create-user-tipo {
+  height: 15%;
+}
 
-    .card-content-formulario {
-      flex: 7; /* El 70% del ancho se asigna aquí */
-      margin-right: 20px;
+.titulo-tipo-user {
+  margin-bottom: 10px; /* Ajusta el valor de margen según tus necesidades */
+}
 
-      form {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-        align-items: stretch;
-        padding: 20px;
-        width: 100%;
+.desplegble-tipo-user{
+  width: 100%;
+}
 
-        .form-group {
-          margin-bottom: 20px;
-        }
+.dialog-create-user-box {
+  height: 75%;
+  display: flex;
+}
 
-        input[type="text"],
-        input[type="email"],
-        input[type="password"] {
-          width: 100%;
-          padding: 10px;
-        }
-      }
-    }
+.div-inferior-botones {
+  height: 10%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  width: 100%;
+}
 
-    .col-12.md\:col-4 {
-      text-align: center;
-      align-self: center; /* Agrega esta propiedad para centrar verticalmente el avatar */
-    }
-  }
+.dialog-create-user-box-form {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0 20px;
 
-  .div-inferior-botones {
+  .form-group {
+    margin-bottom: 20px;
     display: flex;
     flex-direction: column;
-    justify-content: flex-end; /* Alinea los botones en la parte inferior */
-    align-items: flex-end; /* Alinea los botones a la derecha */
-    width: 100%;
-    flex: 2;
-  
-    .p-button {
-      font-size: 16px;
-      padding: 10px 20px;
-      margin: 10px;
-      text-align: right; /* Justifica el texto del botón a la derecha */
+
+    label {
+      width: 100%;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"] {
+      width: 100%;
+      padding: 10px;
     }
   }
-  
+}
 
-  p {
-    font-size: 18px;
-  }
+.div-info-user-avatar {
+  width: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 20px;
+}
 
-  h5 {
-    font-size: 18px;
-  }
+
+.div-inferior-botones {
+  text-align: right;
+  align-items: flex-end;
+  padding: 10px;
+  margin-bottom: 0px;
+
+span.p-buttonset {
+  display: inline;
+}
 }

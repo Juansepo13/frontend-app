@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import { HttpErrorResponse } from '@angular/common/http';
 import { UserService } from '../../user.service';
 import { MatDialogRef } from '@angular/material/dialog';
 import { EventEmitter, Output } from '@angular/core';
@@ -17,12 +17,13 @@ export class UserCreateComponent {
     email: '',
     username: '',
     password: '',
-    message: ''
+    message: '',
   };
 
   @ViewChild('userForm') userForm?: NgForm;
 
   @Output() userCreated: EventEmitter<void> = new EventEmitter<void>(); // Define el evento userCreated
+  
 
   constructor(
     private router: Router, 

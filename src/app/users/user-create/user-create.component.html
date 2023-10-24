@@ -1,18 +1,27 @@
-<div class="div-padre-dialog-user-edit">
-  <div class="card-title">
+<div class="padre-dialog-create-user">
+  <div class="dialog-create-user-header">
     <h2>Nuevo Usuario</h2>
   </div>
 
-  <div class="div-central">
-    
+  <div class="dialog-create-user-tipo">
+    <h4>Lugar(es) donde sera integrante o visitante</h4>
+    <mat-form-field>
+      <mat-label class="desplegble-tipo-user">Tipo de usuario</mat-label>
+      <select matNativeControl required>
+        <option value="residente">Residente</option>
+        <option value="visitante">Visitante</option>
+        <option value="seguridad">Seguridad</option>
+        <option value="mantenimiento">Mantenimiento</option>
+        <option value="Aseo">Aseo</option>
+        <option value="cooperador">Cooperador</option>
+      </select>
+    </mat-form-field>
+  </div>
 
-    <div class="card-content-formulario">
+  <div class="dialog-create-user-box">
+    <div class="dialog-create-user-box-form">
       <form #userForm="ngForm">
-        <!-- Campos del formulario -->
-        <div class="card flex justify-content-center">
-          <!-- <p-cascadeSelect [(ngModel)]="selectedCity" [options]="countries" optionLabel="cname" optionGroupLabel="name" [optionGroupChildren]="['states', 'cities']" [style]="{ minWidth: '14rem' }" placeholder="Select a City"></p-cascadeSelect> -->
-      </div>
-        <div class="form-group">
+          <div class="form-group">
           <label for="name">Nombre:</label>
           <input type="text" id="name" name="name" [(ngModel)]="newUser.name" required>
         </div>
@@ -34,22 +43,22 @@
           <input type="text" id="message" name="message" [(ngModel)]="newUser.message" required>
         </div>      
       </form>
+
     </div>
 
-    <div class="col-12 md:col-4">
-      <p-avatar label="P" styleClass="mr-2" size="xlarge" shape="circle"></p-avatar>
-      <h5></h5>
+    <div class="dialog-create-user-box-avatar">
+      <div class="div-info-user-avatar">
+        <img src="https://previews.123rf.com/images/yupiramos/yupiramos2002/yupiramos200226039/140237905-cara-joven-en-marco-circular-avatar-car%C3%A1cter-icono-vector-ilustraci%C3%B3n-dise%C3%B1o.jpg" alt="Avatar del usuario" width="150" height="150">
+      </div>
     </div>
+
+    
   </div>
 
   <div class="div-inferior-botones">
     <span class="p-buttonset">
-      <button pButton pRipple label="Save" icon="pi pi-check" (click)="createUser()" [disabled]="!userForm.valid"></button>
-      <button pButton pRipple label="Cancel" icon="pi pi-times" (click)="confirmCancel()"></button>
-    </span>
-  </div>
+      <p-button label="Guardar" icon="pi pi-check" (click)="createUser()"></p-button>
+      <p-button label="Cancelar" icon="pi pi-times" (click)="confirmCancel()"></p-button>
+  </span>
+
 </div>
-
-
-
-

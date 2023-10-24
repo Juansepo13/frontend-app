@@ -3,7 +3,9 @@ export interface User {
   user: {
     name: string;
     email: string;
-    // Otras propiedades de user aquí
+    username: string;
+    password: string;
+    
   };
   message: string;
   // Otras propiedades del usuario aquí

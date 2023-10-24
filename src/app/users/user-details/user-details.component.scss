@@ -145,12 +145,10 @@ margin-left: 10px; /* Agrega espacio entre el texto y el icono */
 
 //botones 
 .div-inferior-botones {
-    text-align: right;
-    align-items: flex-end;
-    padding: 10px;
-    margin-bottom: 0px;
-
-  span.p-buttonset {
-    display: inline;
-  }
+  display: flex; /* Añade display flex */
+  justify-content: flex-end; /* Alinea los botones a la derecha */
+  align-items: center; /* Alinea los botones verticalmente al centro si es necesario */
+  padding: 10px;
+  margin-bottom: 0px;
+  
 }
