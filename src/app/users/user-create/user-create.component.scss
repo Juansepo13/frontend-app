@@ -8,6 +8,8 @@
 .dialog-create-user-header,
 .dialog-create-user-tipo {
   height: 15%;
+  width: 100%;
+  margin-left: 20px;
 }
 
 .titulo-tipo-user {
@@ -19,8 +21,9 @@
 }
 
 .dialog-create-user-box {
-  height: 75%;
   display: flex;
+  justify-content: space-between;
+  margin: 10px;
 }
 
 .div-inferior-botones {
@@ -45,32 +48,32 @@
     flex-direction: column;
 
     label {
-      width: 100%;
+      width: 70%;
     }
 
     input[type="text"],
     input[type="email"],
     input[type="password"] {
-      width: 100%;
+      width: 70%;
       padding: 10px;
     }
   }
 }
 
 .div-info-user-avatar {
-  width: 20%;
+  width: 150px;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-left: 20px;
+  margin-left: 5px;
 }
 
 
 .div-inferior-botones {
   text-align: right;
   align-items: flex-end;
-  padding: 10px;
-  margin-bottom: 0px;
+  margin: 5px;
+  
 
 span.p-buttonset {
   display: inline;

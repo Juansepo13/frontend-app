@@ -31,6 +31,8 @@ import { UserDeleteByIdComponent } from './users/user-delete-by-id/user-delete-b
 import { ImageBrokeDirective } from './image-broke.directive';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatSelectModule } from '@angular/material/select';
+import { MatCommonModule } from '@angular/material/core';
+import { InputNumberModule } from 'primeng/inputnumber';
 
 @NgModule({
   declarations: [
@@ -65,7 +67,9 @@ import { MatSelectModule } from '@angular/material/select';
     ReactiveFormsModule,
     RouterModule,
     MatChipsModule,
-    MatSelectModule 
+    MatSelectModule,
+    MatCommonModule,
+    InputNumberModule,
   ],
   providers: [PrimeNGConfig, UserService], // Agrega UserService y TuitService como proveedores
   bootstrap: [AppComponent],
