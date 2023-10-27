@@ -18,8 +18,16 @@
           <input type="text" formControlName="name" />
         </div>
         <div class="form-group">
+          <label for="name">DNI:</label>
+          <input type="text" formControlName="DNI" />
+        </div>
+        <div class="form-group">
           <label for="email">Email:</label>
           <input type="text" formControlName="email" />
+        </div>
+        <div class="form-group">
+          <label for="name">Telefono:</label>
+          <input type="text" formControlName="telefono" />
         </div>
         <div class="form-group">
           <label for="username">Username:</label>
@@ -42,48 +50,3 @@
     </span>
   </div>
 </div>
-
-
-
-
-
-
-<!-- <div class="div-padre-dialog-user-edit">
-  <div class="card-title">
-    <h2>Editar Usuario</h2>
-  </div>
-
-  <div class="div-central">
-    <div class="card-content-formulario">
-      <h2></h2>
-
-      <div class="col-12 md:col-4">
-        <p-avatar label="P" styleClass="mr-2" size="xlarge" shape="circle"></p-avatar>
-        <h5>{{ userForm.get('name')?.value }}</h5>
-      </div>
-
-      <form [formGroup]="userForm">
-        <div class="form-group">
-          <label for="name">Nombre:</label>
-          <input type="text" formControlName="name" required [disabled]="!editMode">
-        </div>
-        <div class="form-group">
-          <label for="email">Correo Electrónico:</label>
-          <input type="text" formControlName="email" required [disabled]="!editMode">
-        </div>
-        Agrega más campos según tus necesidades
-        <div class="form-group">
-          <label for="message">Mensaje:</label>
-          <input type="text" formControlName="message" required [disabled]="!editMode">
-        </div>
-      </form>
-    </div>
-  </div>
-
-  <div class="div-inferior-botones">
-    <span class="p-buttonset">
-      <button pButton pRipple label="Cerrar" icon="pi pi-times" (click)="onCancel()"></button>
-      <button pButton pRipple label="Guardar" icon="pi pi-check" (click)="onSave()" [disabled]="!editMode || userForm.invalid"></button>
-    </span>
-  </div>
-</div> -->

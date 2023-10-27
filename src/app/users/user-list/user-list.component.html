@@ -3,7 +3,7 @@
   <div class="table-header">
     <p-button label="+ Nuevo" (click)="openCreateUserDialog()"></p-button>
     <!-- <i class="pi pi-trash custom-trash-icon" (click)="openDeleteUserByIdDialog()"></i> -->
-    <i class="pi pi-trash custom-trash-icon1" (click)="confirmDeleteSelected()" [ngClass]="{'confirmation': isDeleteConfirmation, 'black-icon': isDeleteConfirmation}"></i>
+    <i class="pi pi-trash custom-trash-icon" (click)="confirmDeleteSelected()" [ngClass]="{'confirmation': isDeleteConfirmation, 'black-icon': isDeleteConfirmation}"></i>
 
 
 
@@ -29,14 +29,16 @@
               <th style="width: 4rem">
                 <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
               </th>
-              <th pSortableColumn="id" style="width: 8%">ID <p-sortIcon field="id"></p-sortIcon></th>
-              <th pSortableColumn="user.name" style="width: 10%">Name <p-sortIcon field="user.name"></p-sortIcon></th>
-              <th pSortableColumn="user.username" style="width: 10%">Email <p-sortIcon field="user.username"></p-sortIcon></th>
-              <th pSortableColumn="user.email" style="width: 18%">Telefono <p-sortIcon field="user.email"></p-sortIcon></th>
-              <th pSortableColumn="message" style="width: 34%">Tipo <p-sortIcon field="message"></p-sortIcon></th>
-              <th style="width: 5%"></th>
-              <th style="width: 5%"></th>
-              <th style="width: 5%"></th>
+              <th pSortableColumn="id" style="width: auto">ID <p-sortIcon field="id"></p-sortIcon></th>
+              <th pSortableColumn="user.name" style="width: auto">Name <p-sortIcon field="user.name"></p-sortIcon></th>
+              <th pSortableColumn="user.DNI" style="width: auto">DNI <p-sortIcon field="user.DNI"></p-sortIcon></th>
+              <th pSortableColumn="user.email" style="width: auto">Email <p-sortIcon field="user.email"></p-sortIcon></th>
+              <th pSortableColumn="user.telefono" style="width: auto">Telefono <p-sortIcon field="user.telefono"></p-sortIcon></th>
+              <th pSortableColumn="user.username" style="width: auto">UserName <p-sortIcon field="user.username"></p-sortIcon></th>
+              <th pSortableColumn="message" style="width: auto">Tipo <p-sortIcon field="message"></p-sortIcon></th>
+              <th style="width: auto"></th>
+              <th style="width: auto"></th>
+              <th style="width: auto"></th>
             </tr>
           </ng-template>
         
@@ -45,7 +47,9 @@
               <td><p-tableCheckbox [value]="user"></p-tableCheckbox></td>
               <td>{{ user.id }}</td>
               <td>{{ user.user.name }}</td>
+              <td>{{ user.user.DNI }}</td>
               <td>{{ user.user.email }}</td>
+              <td>{{ user.user.telefono }}</td>
               <td>{{ user.user.username }}</td>
               <td>{{ user.message }}</td>
               <td>

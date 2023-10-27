@@ -31,8 +31,9 @@ export class UserService {
   }
 
   editUser(id: number, updatedUserData: any): Observable<any> {
-    return this.http.patch(`${this.apiUrl}/${id}`, updatedUserData, this.httpOptions);
+    return this.http.put(`${this.apiUrl}/${id}`, updatedUserData, this.httpOptions);
   }
+  
 
   updateUser(Id: number, user: { message: string }): Observable<any> {
     return this.http.patch(`${this.apiUrl}/${Id}`, user, this.httpOptions);

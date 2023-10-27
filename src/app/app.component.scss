@@ -20,27 +20,28 @@ header {
 
 /* Estilos para el barra lateral (mat-drawer) */
 mat-drawer {
-  width: 180px;
+  width: 5rem;
   background-color: rgb(218, 227, 245); /* Corrección: color en lugar de color:rgb(218, 227, 245); */
   position: fixed;
-  top: 80px;
+  top: 5rem;
   bottom: 0;
   flex-shrink: 0;
+  z-index: 0
 }
 
 /* Estilos para el contenido principal (mat-drawer-content) */
 mat-drawer-content {
   flex: 1;
-  padding: 16px;
+  padding: 1rem;
   color: rgb(0, 0, 0);
-  margin-top: 80px;
+  margin-top: 20px; /* Reducido el margen superior para que el contenido empiece más arriba */
   position: fixed;
-  top: 20px;
-  bottom: 60px;
-  left: 50px;
-  right: 0px;
+  top: 1rem;
+  bottom: 1rem;
+  left: 1rem; /* Reducido el margen izquierdo para que el contenido empiece más a la izquierda */
+  right: 1rem; /* Reducido el margen derecho para que el contenido termine antes */
   overflow-y: auto;
-  max-height: calc(100vh - 140px);
+  max-height: calc(100vh - 20px); /* Reducido el alto máximo del contenido */
 }
 
 /* Estilos para el footer */

@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { UserService } from '../../user.service'; // Importa el servicio de usuarios
+import { UserService } from '../../user.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -10,7 +10,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class UserEditComponent implements OnInit {
   userForm: FormGroup;
-  editMode: boolean = false;
+  editMode: boolean = true;
   originalUserData: any; // Guardar los datos originales del usuario
 
   constructor(
@@ -24,7 +24,9 @@ export class UserEditComponent implements OnInit {
       email: [this.originalUserData?.email ?? '', [Validators.required, Validators.email]],
       username: [this.originalUserData?.username ?? '', Validators.required],
       message: [this.originalUserData?.message ?? ''],
-      // Otros campos del formulario
+      DNI: [this.originalUserData?.DNI ?? ''],
+      telefono: [this.originalUserData?.telefono ?? ''],
+      // Agrega otros campos del formulario aquí
     });
   }
 
@@ -46,40 +48,51 @@ export class UserEditComponent implements OnInit {
       }
     );
   }
+  
 
   onSave() {
-  if (this.userForm.valid) {
-    const userId = this.data.userId;
-    const updatedUserData = this.userForm.value;
-    
-    // Comprueba si se realizaron cambios en los campos del formulario
-    if (!this.isDataChanged(updatedUserData, this.originalUserData)) {
-      // No hay cambios, no se envía la solicitud
-      this.dialogRef.close('no-changes');
-    } else {
-      this.userService.editUser(userId, updatedUserData).subscribe(
-        () => {
-          this.dialogRef.close('updated');
-        },
-        (error) => {
-          console.error('Error al actualizar el usuario:', error);
-          // Manejo de errores
-        }
-      );
+    if (this.userForm.valid) {
+      const userId = this.data.userId;
+  
+      const updatedUserData = {
+        id: userId,
+        name: this.userForm.get('name')?.value,
+        DNI: this.userForm.get('DNI')?.value,
+        email: this.userForm.get('email')?.value,
+        telefono: this.userForm.get('telefono')?.value,
+        username: this.userForm.get('username')?.value,
+        message: this.userForm.get('message')?.value,
+      };
+  
+      // Comprueba si se realizaron cambios en los campos del formulario
+      if (!this.isDataChanged(updatedUserData, this.originalUserData)) {
+        // No hay cambios, no se envía la solicitud
+        this.dialogRef.close('no-changes');
+      } else {
+        this.userService.editUser(userId, updatedUserData).subscribe(
+          () => {
+            this.dialogRef.close('updated');
+          },
+          (error) => {
+            console.error('Error al actualizar el usuario:', error);
+            // Manejo de errores
+          }
+        );
+      }
     }
   }
-}
- 
-  // Método para verificar si se realizaron cambios en los datos
+  
+
   isDataChanged(updatedData: any, originalData: any): boolean {
     return (
       updatedData.name !== originalData.name ||
       updatedData.email !== originalData.email ||
       updatedData.username !== originalData.username ||
-      updatedData.message !== originalData.message
+      updatedData.message !== originalData.message ||
+      updatedData.DNI !== originalData.DNI ||
+      updatedData.telefono !== originalData.telefono
     );
   }
-  
 
   onCancel() {
     this.dialogRef.close();

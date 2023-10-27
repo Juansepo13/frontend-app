@@ -40,7 +40,9 @@ export class UserCreateComponent {
         message: this.newUser.message,
         user: {
           name: this.newUser.name,
+          DNI: this.newUser.DNI,
           email: this.newUser.email,
+          telefono: this.newUser.telefono,
           username: this.newUser.username,
           password: this.newUser.password
         }

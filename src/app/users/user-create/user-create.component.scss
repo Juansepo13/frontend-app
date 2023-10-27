@@ -7,6 +7,7 @@
 
 .dialog-create-user-header,
 .dialog-create-user-tipo {
+  margin: 10px, 0px, 0px, 20px;
   height: 15%;
   width: 100%;
   margin-left: 20px;
@@ -16,7 +17,7 @@
   margin-bottom: 10px; /* Ajusta el valor de margen según tus necesidades */
 }
 
-.desplegble-tipo-user{
+.desplegable-tipo-user{
   width: 100%;
 }
 
@@ -72,10 +73,12 @@
 .div-inferior-botones {
   text-align: right;
   align-items: flex-end;
-  margin: 5px;
+  margin: 10px;
+
   
 
 span.p-buttonset {
   display: inline;
+  margin: 10px;
 }
 }
